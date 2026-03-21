@@ -1,0 +1,12 @@
+body {
+	font-family: var(--font);
+	background: var(--color-bg-gray);
+	color: var(--color-dark);
+}
+
+.container {
+	width: 100%;
+	max-width: var(--container);
+	margin: 0 auto;
+	padding: 0 20px;
+}

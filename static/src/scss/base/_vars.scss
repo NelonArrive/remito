@@ -1,0 +1,33 @@
+:root {
+  --color-primary:       #3A86FF;
+  --color-primary-dark:  #2563EB;
+  --color-primary-light: #EEF4FF;
+  --color-accent:        #F97316;
+  --color-accent-dark:   #EA6C0A;
+  --color-success:       #22C55E;
+
+  --color-dark:          #0F1B2D;
+  --color-text:          #3D4F66;
+  --color-muted:         #6B7A8D;
+
+  --color-bg-white:      #FFFFFF;
+  --color-bg-gray:       #F5F7FA;
+  --color-border:        #E8EDF3;
+
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   16px;
+  --radius-xl:   24px;
+  --radius-full: 100px;
+
+  --shadow-sm: 0 1px 4px rgba(15,27,45,.06);
+  --shadow-md: 0 4px 20px rgba(15,27,45,.09);
+  --shadow-lg: 0 8px 40px rgba(15,27,45,.13);
+
+  --font: 'Golos Text', sans-serif;
+  --container: 1200px;
+  --transition: 0.22s ease;
+
+  --topbar-h: 40px;
+  --header-h: 72px;
+}

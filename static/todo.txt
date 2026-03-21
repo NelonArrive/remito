@@ -1,0 +1,21 @@
+/remont/                   → каталог услуг
+/remont/printer/           → ремонт принтеров
+/remont/printer/canon/     → Canon
+/remont/noutbuk/           → ноутбуки
+/zapravka/                 → заправка картриджей
+/tovary/                   → товары
+/tovary/kartridzhi/        → картриджи
+/web/                      → веб-услуги
+/blog/                     → блог
+/blog/kak-zapravit/        → статья
+/kontakty/
+
+2. Hero (Swiper)   
+3. Brands          — бесконечный marquee-слайдер логотипов брендов
+4. Services        — услуги сеткой, карточки с иконкой + цена + кнопка
+5. How it works    — как мы работаем, 3-4 шага (горизонтально)
+6. Products        — товары карточками со Swiper (картриджи, запчасти)
+7. Advantages      — преимущества (почему мы, цифры, факты)
+8. Reviews         — отзывы Swiper
+9. FAQ             — аккордеон вопрос-ответ
+10. Form (CTA)     — форма заявки / вызов мастера
