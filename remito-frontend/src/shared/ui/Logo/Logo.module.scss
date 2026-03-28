@@ -1,0 +1,76 @@
+.logo {
+	display: flex;
+	align-items: center;
+	gap: 11px;
+	flex-shrink: 0;
+	text-decoration: none;
+}
+
+.icon {
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+}
+
+.iconCompact {
+	width: 34px;
+	height: 34px;
+}
+
+.text {
+	display: flex;
+	flex-direction: column;
+	gap: 1px;
+}
+
+.name {
+	font-size: 21px;
+	font-weight: 700;
+	letter-spacing: -0.4px;
+	background: linear-gradient(to bottom, var(--color-dark) 45%, #ffffff 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+.nameCompact {
+	font-size: 18px;
+}
+
+.slogan {
+	font-size: 11px;
+	font-weight: 500;
+	white-space: nowrap;
+	background: linear-gradient(to bottom, var(--color-muted) 60%, #ffffff 100%);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+}
+
+// Responsive
+@media (max-width: 1024px) {
+	.slogan {
+		display: none;
+	}
+}
+
+@media (max-width: 768px) {
+	.icon {
+		width: 38px;
+		height: 38px;
+	}
+	.name {
+		font-size: 19px;
+	}
+}
+
+@media (max-width: 480px) {
+	.icon {
+		width: 34px;
+		height: 34px;
+	}
+	.name {
+		font-size: 17px;
+	}
+}

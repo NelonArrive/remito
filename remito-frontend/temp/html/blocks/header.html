@@ -1,0 +1,254 @@
+<div class="topbar">
+	<div class="container">
+		<div class="topbar__left">
+			<span class="topbar__item topbar__item--city">
+				<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+					stroke-linecap="round" stroke-linejoin="round">
+					<path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" />
+					<circle cx="12" cy="10" r="3" />
+				</svg>
+				Екатеринбург
+			</span>
+			<span class="topbar__item">
+				<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+					stroke-linecap="round" stroke-linejoin="round">
+					<circle cx="12" cy="12" r="10" />
+					<polyline points="12 6 12 12 16 14" />
+				</svg>
+				Пн–Вс, 9:00–21:00
+			</span>
+			<span class="topbar__item topbar__item--hide-sm">
+				<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+					stroke-linecap="round" stroke-linejoin="round">
+					<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+				</svg>
+				Выезд за 1 час
+			</span>
+		</div>
+
+		<div class="topbar__right">
+			<span class="topbar__badge">Принимаем заявки</span>
+			<a href="/kontakty" class="topbar__link">Контакты</a>
+			<a href="/blog" class="topbar__link">Блог</a>
+		</div>
+	</div>
+</div>
+
+<header class="header">
+	<div class="container">
+		<a href="/" class="logo" aria-label="Remito — на главную">
+			<div class="logo__icon">
+				<svg>
+					<use href="./img/svgsprite/sprite.symbol.svg#logo"></use>
+				</svg>
+			</div>
+			<div class="logo__text">
+				<span class="logo__name">Remito</span>
+				<span class="logo__slogan">Ремонт оргтехники в Екатеринбурге</span>
+			</div>
+		</a>
+
+		<nav class="nav" aria-label="Основная навигация">
+			<ul class="nav__list">
+				<li class="nav__item">
+					<a href="/uslugi" class="nav__link">
+						Услуги
+						<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+							stroke-linecap="round" stroke-linejoin="round">
+							<polyline points="6 9 12 15 18 9" />
+						</svg>
+					</a>
+					<div class="nav__dropdown" role="menu">
+						<a href="/remont/printer" class="nav__dropdown-link">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+								stroke-linecap="round" stroke-linejoin="round">
+								<polyline points="6 9 6 2 18 2 18 9" />
+								<path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+								<rect x="6" y="14" width="12" height="8" />
+							</svg>
+							Ремонт принтеров и МФУ
+						</a>
+						<a href="/remont/noutbuk" class="nav__dropdown-link">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+								stroke-linecap="round" stroke-linejoin="round">
+								<rect x="2" y="3" width="20" height="14" rx="2" />
+								<line x1="2" y1="20" x2="22" y2="20" />
+							</svg>
+							Ремонт ноутбуков
+						</a>
+						<a href="/zapravka" class="nav__dropdown-link">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+								stroke-linecap="round" stroke-linejoin="round">
+								<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+								<polyline points="14 2 14 8 20 8" />
+							</svg>
+							Заправка картриджей
+						</a>
+						<a href="/remont/kompyuter" class="nav__dropdown-link">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+								stroke-linecap="round" stroke-linejoin="round">
+								<rect x="2" y="3" width="20" height="14" rx="2" />
+								<line x1="8" y1="21" x2="16" y2="21" />
+								<line x1="12" y1="17" x2="12" y2="21" />
+							</svg>
+							Ремонт компьютеров
+						</a>
+					</div>
+				</li>
+
+				<li class="nav__item">
+					<a href="/brendy" class="nav__link">Бренды</a>
+				</li>
+				<li class="nav__item">
+					<a href="/tovary" class="nav__link">Товары</a>
+				</li>
+				<li class="nav__item">
+					<a href="/ceny" class="nav__link">Цены</a>
+				</li>
+				<li class="nav__item">
+					<a href="/web" class="nav__link">
+						Web <span class="nav__link-badge">NEW</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+
+		<!-- RIGHT -->
+		<div class="header__right">
+			<div class="header__phone-block">
+				<a href="tel:+73431234567" class="header__phone">+7 (343) 123-45-67</a>
+				<span class="header__phone-sub">Бесплатный вызов</span>
+			</div>
+
+			<a href="#zayavka" class="btn-cta" aria-label="Вызвать мастера">
+				<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+					stroke-linecap="round" stroke-linejoin="round">
+					<path
+						d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z" />
+				</svg>
+				<span>Вызвать мастера</span>
+			</a>
+
+			<button class="burger" id="burgerBtn" aria-label="Открыть меню" aria-expanded="false" aria-controls="mobileMenu">
+				<span></span>
+				<span></span>
+				<span></span>
+			</button>
+		</div>
+	</div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Меню навигации">
+	<div class="mobile-menu__overlay" id="menuOverlay"></div>
+
+	<div class="mobile-menu__panel">
+		<div class="mobile-menu__head">
+			<a href="/" class="logo" style="gap:9px;">
+				<div class="logo__icon" style="width:34px;height:34px;">
+					<span class="logo__icon-letter" style="font-size:17px;">R</span>
+				</div>
+				<span class="logo__name" style="font-size:18px;">Remi<span style="color:var(--color-primary)">to</span></span>
+			</a>
+			<button class="mobile-menu__close" id="menuClose" aria-label="Закрыть меню">
+				<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+					stroke-linecap="round" stroke-linejoin="round">
+					<line x1="18" y1="6" x2="6" y2="18" />
+					<line x1="6" y1="6" x2="18" y2="18" />
+				</svg>
+			</button>
+		</div>
+
+		<div class="mobile-menu__phone">
+			<a href="tel:+73431234567" class="mobile-menu__phone-num">+7 (343) 123-45-67</a>
+			<span class="mobile-menu__phone-sub">Бесплатный вызов мастера</span>
+		</div>
+
+		<nav class="mobile-menu__nav">
+			<div>
+				<a href="#" class="mobile-menu__link" id="servicesToggle" aria-expanded="false">
+					Услуги
+					<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+						stroke-linecap="round" stroke-linejoin="round" style="transition:transform .2s">
+						<polyline points="6 9 12 15 18 9" />
+					</svg>
+				</a>
+				<div class="mobile-menu__sub" id="servicesSub">
+					<a href="/remont/printer" class="mobile-menu__sub-link">
+						<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+							stroke-linecap="round" stroke-linejoin="round">
+							<polyline points="6 9 6 2 18 2 18 9" />
+							<path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2" />
+							<rect x="6" y="14" width="12" height="8" />
+						</svg>
+						Ремонт принтеров и МФУ
+					</a>
+					<a href="/remont/noutbuk" class="mobile-menu__sub-link">
+						<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+							stroke-linecap="round" stroke-linejoin="round">
+							<rect x="2" y="3" width="20" height="14" rx="2" />
+							<line x1="2" y1="20" x2="22" y2="20" />
+						</svg>
+						Ремонт ноутбуков
+					</a>
+					<a href="/zapravka" class="mobile-menu__sub-link">
+						<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+							stroke-linecap="round" stroke-linejoin="round">
+							<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+							<polyline points="14 2 14 8 20 8" />
+						</svg>
+						Заправка картриджей
+					</a>
+					<a href="/remont/kompyuter" class="mobile-menu__sub-link">
+						<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+							stroke-linecap="round" stroke-linejoin="round">
+							<rect x="2" y="3" width="20" height="14" rx="2" />
+							<line x1="8" y1="21" x2="16" y2="21" />
+							<line x1="12" y1="17" x2="12" y2="21" />
+						</svg>
+						Ремонт компьютеров
+					</a>
+				</div>
+			</div>
+
+			<a href="/brendy" class="mobile-menu__link">Бренды</a>
+			<a href="/tovary" class="mobile-menu__link">Товары</a>
+			<a href="/ceny" class="mobile-menu__link">Цены</a>
+			<a href="/web" class="mobile-menu__link">
+				Web
+				<span class="nav__link-badge" style="margin-left:auto;">NEW</span>
+			</a>
+			<a href="/blog" class="mobile-menu__link">Блог</a>
+			<a href="/kontakty" class="mobile-menu__link">Контакты</a>
+		</nav>
+
+		<!-- Footer -->
+		<div class="mobile-menu__footer">
+			<div class="mobile-menu__info">
+				<span class="mobile-menu__info-item">
+					<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+						stroke-linecap="round" stroke-linejoin="round">
+						<circle cx="12" cy="12" r="10" />
+						<polyline points="12 6 12 12 16 14" />
+					</svg>
+					Пн–Вс, 9:00–21:00
+				</span>
+				<span class="mobile-menu__info-item">
+					<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+						stroke-linecap="round" stroke-linejoin="round">
+						<path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z" />
+						<circle cx="12" cy="10" r="3" />
+					</svg>
+					Екатеринбург
+				</span>
+			</div>
+			<a href="#zayavka" class="btn-cta">
+				<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+					stroke-linecap="round" stroke-linejoin="round">
+					<path
+						d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z" />
+				</svg>
+				<span>Вызвать мастера</span>
+			</a>
+		</div>
+	</div>
+</div>

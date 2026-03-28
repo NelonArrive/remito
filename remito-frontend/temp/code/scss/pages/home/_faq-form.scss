@@ -1,0 +1,376 @@
+.faq {
+	background: var(--color-bg-white);
+	padding: 96px 0;
+}
+
+/* ---- Лэйаут: 2 колонки ---- */
+.faq__inner {
+	display: grid;
+	grid-template-columns: 380px 1fr;
+	gap: 80px;
+	align-items: start;
+}
+
+/* ---- Левая: шапка + CTA ---- */
+.faq__left {
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+	position: sticky;
+	top: 100px;
+}
+
+.faq__head {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 14px;
+}
+
+/* Счётчик вопросов */
+.faq__counter {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 13px;
+	color: var(--color-muted);
+	font-weight: 500;
+}
+
+.faq__counter-num {
+	font-size: 40px;
+	font-weight: 900;
+	color: var(--color-dark);
+	letter-spacing: -1.5px;
+	line-height: 1;
+}
+
+.faq__counter-label {
+	font-size: 13px;
+	color: var(--color-muted);
+	font-weight: 500;
+	line-height: 1.4;
+	max-width: 80px;
+}
+
+/* Карточка "Не нашли ответ?" */
+.faq__ask {
+	background: var(--color-bg-gray);
+	border: 1.5px solid var(--color-border);
+	border-radius: var(--radius-xl);
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+}
+
+.faq__ask-title {
+	font-size: 16px;
+	font-weight: 700;
+	color: var(--color-dark);
+}
+
+.faq__ask-desc {
+	font-size: 13.5px;
+	color: var(--color-muted);
+	line-height: 1.6;
+}
+
+.faq__ask-btns {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.btn-ask-primary {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	background: var(--color-accent);
+	color: #fff;
+	font-family: var(--font);
+	font-size: 14px;
+	font-weight: 700;
+	padding: 13px 20px;
+	border-radius: var(--radius-md);
+	border: none;
+	cursor: pointer;
+	transition: background var(--transition), transform var(--transition),
+		box-shadow var(--transition);
+	text-decoration: none;
+}
+.btn-ask-primary:hover {
+	background: var(--color-accent-dark);
+	transform: translateY(-1px);
+	box-shadow: 0 6px 18px rgba(249, 115, 22, 0.3);
+}
+
+.btn-ask-tg {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	background: #2aabee;
+	color: #fff;
+	font-family: var(--font);
+	font-size: 14px;
+	font-weight: 600;
+	padding: 12px 20px;
+	border-radius: var(--radius-md);
+	border: none;
+	cursor: pointer;
+	transition: background var(--transition), transform var(--transition);
+	text-decoration: none;
+}
+.btn-ask-tg:hover {
+	background: #229ed9;
+	transform: translateY(-1px);
+}
+
+/* Популярные теги */
+.faq__tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 7px;
+}
+
+.faq__tag {
+	display: inline-flex;
+	align-items: center;
+	font-size: 12.5px;
+	font-weight: 600;
+	color: var(--color-text);
+	background: var(--color-bg-gray);
+	border: 1.5px solid var(--color-border);
+	padding: 5px 12px;
+	border-radius: var(--radius-full);
+	cursor: pointer;
+	transition: all var(--transition);
+	border: none;
+	font-family: var(--font);
+}
+.faq__tag:hover,
+.faq__tag.is-active {
+	background: var(--color-primary-light);
+	color: var(--color-primary);
+}
+
+/* ---- Правая: аккордеон ---- */
+.faq__list {
+	display: flex;
+	flex-direction: column;
+	gap: 0;
+	border: 1.5px solid var(--color-border);
+	border-radius: var(--radius-xl);
+	overflow: hidden;
+}
+
+/* Один элемент аккордеона */
+.faq-item {
+	border-bottom: 1.5px solid var(--color-border);
+	transition: background var(--transition);
+}
+.faq-item:last-child {
+	border-bottom: none;
+}
+.faq-item.is-open {
+	background: var(--color-bg-gray);
+}
+
+/* Кнопка-заголовок */
+.faq-item__btn {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 22px 28px;
+	background: none;
+	border: none;
+	cursor: pointer;
+	text-align: left;
+	font-family: var(--font);
+	transition: background var(--transition);
+}
+.faq-item__btn:hover {
+	background: var(--color-bg-gray);
+}
+.faq-item.is-open .faq-item__btn {
+	background: transparent;
+}
+
+.faq-item__left {
+	display: flex;
+	align-items: flex-start;
+	gap: 14px;
+	flex: 1;
+	min-width: 0;
+}
+
+/* Номер вопроса */
+.faq-item__index {
+	font-size: 12px;
+	font-weight: 700;
+	color: var(--color-border);
+	flex-shrink: 0;
+	min-width: 20px;
+	padding-top: 2px;
+	transition: color var(--transition);
+	font-variant-numeric: tabular-nums;
+}
+.faq-item.is-open .faq-item__index,
+.faq-item__btn:hover .faq-item__index {
+	color: var(--color-primary);
+}
+
+.faq-item__question {
+	font-size: 15px;
+	font-weight: 700;
+	color: var(--color-dark);
+	line-height: 1.4;
+	transition: color var(--transition);
+}
+.faq-item.is-open .faq-item__question {
+	color: var(--color-primary);
+}
+
+/* Иконка +/− */
+.faq-item__icon {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	border: 1.5px solid var(--color-border);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	color: var(--color-muted);
+	transition: background var(--transition), border-color var(--transition),
+		color var(--transition), transform var(--transition);
+}
+.faq-item.is-open .faq-item__icon {
+	background: var(--color-primary);
+	border-color: var(--color-primary);
+	color: #fff;
+	transform: rotate(45deg);
+}
+
+/* Тело аккордеона */
+.faq-item__body {
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows 0.3s ease;
+}
+.faq-item.is-open .faq-item__body {
+	grid-template-rows: 1fr;
+}
+
+.faq-item__body-inner {
+	overflow: hidden;
+}
+
+.faq-item__answer {
+	padding: 0 28px 24px calc(28px + 20px + 14px);
+	font-size: 14.5px;
+	color: var(--color-text);
+	line-height: 1.75;
+}
+
+.faq-item__answer p + p {
+	margin-top: 10px;
+}
+
+.faq-item__answer a {
+	color: var(--color-primary);
+	font-weight: 600;
+	text-decoration: underline;
+	text-decoration-color: rgba(58, 134, 255, 0.3);
+	transition: text-decoration-color var(--transition);
+}
+.faq-item__answer a:hover {
+	text-decoration-color: var(--color-primary);
+}
+
+/* Тег категории внутри вопроса */
+.faq-item__cat {
+	display: inline-flex;
+	align-items: center;
+	font-size: 11px;
+	font-weight: 700;
+	padding: 2px 9px;
+	border-radius: var(--radius-full);
+	margin-left: 8px;
+	vertical-align: middle;
+	white-space: nowrap;
+}
+.faq-item__cat--repair {
+	background: #eef4ff;
+	color: var(--color-primary);
+}
+.faq-item__cat--price {
+	background: #fff7ed;
+	color: #d97706;
+}
+.faq-item__cat--cart {
+	background: #f0fdf4;
+	color: #16a34a;
+}
+.faq-item__cat--guarant {
+	background: #fdf4ff;
+	color: #9333ea;
+}
+.faq-item__cat--work {
+	background: #fef2f2;
+	color: #dc2626;
+}
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 960px) {
+	.faq__inner {
+		grid-template-columns: 1fr;
+		gap: 40px;
+	}
+	.faq__left {
+		position: static;
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 20px;
+		align-items: start;
+	}
+	.faq__head {
+		grid-column: span 2;
+	}
+}
+
+@media (max-width: 640px) {
+	.faq {
+		padding: 64px 0;
+	}
+	.faq__left {
+		grid-template-columns: 1fr;
+	}
+	.faq__head {
+		grid-column: span 1;
+	}
+	.faq-item__btn {
+		padding: 18px 20px;
+	}
+	.faq-item__answer {
+		padding: 0 20px 20px 20px;
+	}
+	.faq-item__left {
+		gap: 10px;
+	}
+	.faq-item__question {
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 400px) {
+	.faq-item__index {
+		display: none;
+	}
+}
