@@ -1,4 +1,7 @@
 package dev.remito.brand;
 
-public class BrandRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface BrandRepository extends JpaRepository<Brand, Long> {
+	boolean existsByName(String name);
 }
