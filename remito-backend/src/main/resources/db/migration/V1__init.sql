@@ -32,7 +32,7 @@ CREATE TABLE colors
 (
     id       BIGSERIAL PRIMARY KEY,
     name     VARCHAR(50) NOT NULL UNIQUE, -- Голубой, Чёрный, Пурпурный...
-    hex_code VARCHAR(7)  NOT NULL         -- #00AEEF
+    hex_code VARCHAR(7)  NOT NULL
 );
 
 -- ------------------------------------------------------------
