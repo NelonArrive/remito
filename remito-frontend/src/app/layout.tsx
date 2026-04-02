@@ -1,4 +1,7 @@
 import '@/shared/styles/globals.scss'
+import { CookieBanner } from '@/shared/ui'
+import { Footer } from '@/widgets/Footer'
+import { Header } from '@/widgets/Header'
 import type { Metadata } from 'next'
 import { Golos_Text } from 'next/font/google'
 
@@ -23,7 +26,12 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang='ru' className={golos.variable}>
-			<body>{children}</body>
+			<body>
+				<Header />
+				{children}
+				<Footer />
+				<CookieBanner />
+			</body>
 		</html>
 	)
 }

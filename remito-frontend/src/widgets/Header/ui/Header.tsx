@@ -1,16 +1,17 @@
 'use client'
 
-import { PhoneIcon } from '@/shared/icons'
 import { Button, Logo } from '@/shared/ui'
+import { IconPhone } from '@/shared/ui/icons'
 import { useState } from 'react'
-import { Burger } from './Burger'
+import { Burger } from './Burger/Burger'
 import styles from './Header.module.scss'
-import { MobileMenu } from './MobileMenu'
-import { Nav } from './Nav'
-import { Topbar } from './Topbar'
+import { MobileMenu } from './MobileMenu/MobileMenu'
+import { Nav } from './Nav/Nav'
+import { Topbar } from './Topbar/Topbar'
 
 export const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false)
+	const [popupOpen, setPopupOpen] = useState(false)
 
 	return (
 		<>
@@ -29,7 +30,13 @@ export const Header = () => {
 							<span className={styles.phoneSub}>Бесплатный вызов</span>
 						</div>
 
-						<Button variant='cta' icon={<PhoneIcon />} aria-label='Вызвать мастера' className={styles.ctaBtn}>
+						<Button
+							variant='cta'
+							icon={<IconPhone />}
+							aria-label='Вызвать мастера'
+							className={styles.ctaBtn}
+							onClick={() => setPopupOpen(true)}
+						>
 							Вызвать мастера
 						</Button>
 
