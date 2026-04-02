@@ -8,7 +8,7 @@ plugins {
 }
 
 group = "dev.nelon"
-version = "0.0.1-SNAPSHOT"
+version = "0.1-VERSION"
 description = "remito-backend"
 
 java {
