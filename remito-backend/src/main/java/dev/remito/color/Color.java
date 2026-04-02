@@ -1,16 +1,17 @@
-package dev.remito.brand;
+
+package dev.remito.color;
 
 import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "brands")
+@Table(name = "colors")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Brand {
+public class Color {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,9 +20,7 @@ public class Brand {
 	@Column(nullable = false, unique = true)
 	private String name;
 	
-	private String logoUrl;
-	
 	@Column(nullable = false)
-	@Builder.Default
-	private boolean isActive = true;
+	private String hexCode;
 }
+ 
