@@ -2,10 +2,15 @@ package dev.remito;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.data.redis.repository.configuration.EnableRedisRepositories;
 
 @SpringBootApplication
-@EnableRedisRepositories
+@EnableRedisRepositories(basePackages = "dev.remito.security")
+@EnableJpaRepositories(basePackages = {
+	"dev.remito.user",
+	"dev.remito.product"
+})
 public class RemitoBackendApplication {
 
 	public static void main(String[] args) {
