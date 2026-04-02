@@ -1,0 +1,483 @@
+<section class="faq">
+	<div class="container">
+		<div class="faq__inner">
+			<!-- Левая: шапка + виджеты -->
+			<div class="faq__left">
+				<div class="faq__head">
+					<span class="section-tag">FAQ</span>
+					<h2 class="section-title">Частые <span>вопросы</span></h2>
+					<p class="section-desc">
+						Отвечаем на самые популярные вопросы о ремонте, ценах и
+						гарантии.
+					</p>
+
+					<div class='faq__counter'>
+						<span class="faq__counter-num">12</span>
+						<span class="faq__counter-label">вопросов и ответов</span>
+					</div>
+				</div>
+
+				<!-- Фильтр-теги -->
+				<div class="faq__tags">
+					<button class="faq__tag is-active" data-filter="all">Все</button>
+					<button class="faq__tag" data-filter="repair">Ремонт</button>
+					<button class="faq__tag" data-filter="price">Цены</button>
+					<button class="faq__tag" data-filter="cart">Картриджи</button>
+					<button class="faq__tag" data-filter="guarant">Гарантия</button>
+					<button class="faq__tag" data-filter="work">Работа</button>
+				</div>
+
+				<!-- Не нашли ответ? -->
+				<div class="faq__ask">
+					<h4 class="faq__ask-title">Не нашли ответ?</h4>
+					<p class="faq__ask-desc">
+						Задайте вопрос напрямую — ответим в течение 15 минут
+					</p>
+					<div class="faq__ask-btns">
+						<a href="tel:+73431234567" class="btn-ask-primary">
+							<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+								stroke-linecap="round" stroke-linejoin="round">
+								<path
+									d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.8a16 16 0 0 0 6 6l.86-.86a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.5 16z" />
+							</svg>
+							Позвонить
+						</a>
+						<a href="https://t.me/remito" class="btn-ask-tg">
+							<svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+								<path
+									d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.19 13.771l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.958.788z" />
+							</svg>
+							Написать в Telegram
+						</a>
+					</div>
+				</div>
+			</div>
+
+			<!-- Правая: аккордеон -->
+			<div class="faq__list" id="faqList">
+				<div class="faq-item" data-cat="repair">
+					<button class="faq-item__btn">
+						<div class="faq-item__left">
+							<span class="faq-item__index">01</span>
+							<span class="faq-item__question">
+								Сколько стоит ремонт принтера?
+								<span class="faq-item__cat faq-item__cat--price">Цены</span>
+							</span>
+						</div>
+						<div class="faq-item__icon">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+								stroke-linecap="round" stroke-linejoin="round">
+								<line x1="12" y1="5" x2="12" y2="19" />
+								<line x1="5" y1="12" x2="19" y2="12" />
+							</svg>
+						</div>
+					</button>
+					<div class="faq-item__body">
+						<div class="faq-item__body-inner">
+							<div class="faq-item__answer">
+								<p>
+									Стоимость зависит от типа неисправности и модели принтера.
+									Минимальная цена ремонта — от 500 ₽ за замятие бумаги или
+									чистку. Замена термоузла обходится в 1 200–3 500 ₽, замена
+									платы — от 2 000 ₽.
+								</p>
+								<p>
+									Диагностика всегда <strong>бесплатная</strong> — мастер
+									приедет, осмотрит устройство и назовёт точную стоимость до
+									начала работ. Вы сами решаете, делать ремонт или нет.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="faq-item" data-cat="work">
+					<button class="faq-item__btn">
+						<div class="faq-item__left">
+							<span class="faq-item__index">02</span>
+							<span class="faq-item__question">
+								Как быстро приедет мастер?
+								<span class="faq-item__cat faq-item__cat--work">Работа</span>
+							</span>
+						</div>
+						<div class="faq-item__icon">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+								stroke-linecap="round" stroke-linejoin="round">
+								<line x1="12" y1="5" x2="12" y2="19" />
+								<line x1="5" y1="12" x2="19" y2="12" />
+							</svg>
+						</div>
+					</button>
+					<div class="faq-item__body">
+						<div class="faq-item__body-inner">
+							<div class="faq-item__answer">
+								<p>
+									Стандартное время выезда —
+									<strong>в течение 1 часа</strong> после звонка по всему
+									Екатеринбургу. В час пик или в отдалённые районы может
+									быть до 1.5 часов.
+								</p>
+								<p>
+									Работаем ежедневно с 9:00 до 21:00, включая выходные и
+									праздники. Срочный выезд возможен в тот же день.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="faq-item" data-cat="repair">
+					<button class="faq-item__btn">
+						<div class="faq-item__left">
+							<span class="faq-item__index">03</span>
+							<span class="faq-item__question">
+								Что делать, если принтер печатает с полосами?
+								<span class="faq-item__cat faq-item__cat--repair">Ремонт</span>
+							</span>
+						</div>
+						<div class="faq-item__icon">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+								stroke-linecap="round" stroke-linejoin="round">
+								<line x1="12" y1="5" x2="12" y2="19" />
+								<line x1="5" y1="12" x2="19" y2="12" />
+							</svg>
+						</div>
+					</button>
+					<div class="faq-item__body">
+						<div class="faq-item__body-inner">
+							<div class="faq-item__answer">
+								<p>
+									Полосы при печати — признак загрязнённого или
+									повреждённого картриджа, изношенного фотобарабана или
+									загрязнённого зеркала лазера. У струйных принтеров —
+									засорённые дюзы печатающей головки.
+								</p>
+								<p>
+									В большинстве случаев помогает
+									<a href="/zapravka">заправка или замена картриджа</a>.
+									Если полосы остаются — нужна диагностика. Позвоните нам,
+									мастер определит причину бесплатно.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="faq-item" data-cat="cart">
+					<button class="faq-item__btn">
+						<div class="faq-item__left">
+							<span class="faq-item__index">04</span>
+							<span class="faq-item__question">
+								Сколько раз можно заправлять картридж?
+								<span class="faq-item__cat faq-item__cat--cart">Картриджи</span>
+							</span>
+						</div>
+						<div class="faq-item__icon">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+								stroke-linecap="round" stroke-linejoin="round">
+								<line x1="12" y1="5" x2="12" y2="19" />
+								<line x1="5" y1="12" x2="19" y2="12" />
+							</svg>
+						</div>
+					</button>
+					<div class="faq-item__body">
+						<div class="faq-item__body-inner">
+							<div class="faq-item__answer">
+								<p>
+									Лазерный картридж можно заправлять
+									<strong>3–5 раз</strong> до полного износа фотобарабана.
+									Струйный — 2–3 раза, после чего засоряются дюзы головки.
+								</p>
+								<p>
+									После каждой заправки оцениваем состояние барабана. Если
+									ресурс исчерпан — рекомендуем замену, это дешевле, чем
+									ремонт принтера из-за изношенного расходника.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="faq-item" data-cat="guarant">
+					<button class="faq-item__btn">
+						<div class="faq-item__left">
+							<span class="faq-item__index">05</span>
+							<span class="faq-item__question">
+								Какая гарантия на ремонт?
+								<span class="faq-item__cat faq-item__cat--guarant">Гарантия</span>
+							</span>
+						</div>
+						<div class="faq-item__icon">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+								stroke-linecap="round" stroke-linejoin="round">
+								<line x1="12" y1="5" x2="12" y2="19" />
+								<line x1="5" y1="12" x2="19" y2="12" />
+							</svg>
+						</div>
+					</button>
+					<div class="faq-item__body">
+						<div class="faq-item__body-inner">
+							<div class="faq-item__answer">
+								<p>
+									На все виды ремонтных работ мы даём
+									<strong>официальную гарантию 90 дней</strong>. Выдаём
+									гарантийный талон с датой, описанием работ и подписью
+									мастера.
+								</p>
+								<p>
+									Если в гарантийный период возникла та же неисправность по
+									нашей вине — устраним бесплатно. Это работает всегда, без
+									исключений.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="faq-item" data-cat="price">
+					<button class="faq-item__btn">
+						<div class="faq-item__left">
+							<span class="faq-item__index">06</span>
+							<span class="faq-item__question">
+								Нужно ли платить за диагностику?
+								<span class="faq-item__cat faq-item__cat--price">Цены</span>
+							</span>
+						</div>
+						<div class="faq-item__icon">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+								stroke-linecap="round" stroke-linejoin="round">
+								<line x1="12" y1="5" x2="12" y2="19" />
+								<line x1="5" y1="12" x2="19" y2="12" />
+							</svg>
+						</div>
+					</button>
+					<div class="faq-item__body">
+						<div class="faq-item__body-inner">
+							<div class="faq-item__answer">
+								<p>
+									<strong>Нет, диагностика всегда бесплатная</strong> — и
+									выезд, и осмотр. Мастер определит неисправность и назовёт
+									точную стоимость ремонта до начала работ.
+								</p>
+								<p>
+									Если решите не ремонтировать — просто скажите, никаких
+									дополнительных плат не будет.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="faq-item" data-cat="repair">
+					<button class="faq-item__btn">
+						<div class="faq-item__left">
+							<span class="faq-item__index">07</span>
+							<span class="faq-item__question">
+								Ремонтируете ли принтеры всех брендов?
+								<span class="faq-item__cat faq-item__cat--repair">Ремонт</span>
+							</span>
+						</div>
+						<div class="faq-item__icon">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+								stroke-linecap="round" stroke-linejoin="round">
+								<line x1="12" y1="5" x2="12" y2="19" />
+								<line x1="5" y1="12" x2="19" y2="12" />
+							</svg>
+						</div>
+					</button>
+					<div class="faq-item__body">
+						<div class="faq-item__body-inner">
+							<div class="faq-item__answer">
+								<p>
+									Да, работаем со всеми популярными брендами:
+									<strong>Canon, HP, Xerox, Samsung, Epson, Brother, Kyocera,
+										Ricoh, Pantum, Oki, Lexmark, Konica Minolta</strong>
+									и другими.
+								</p>
+								<p>
+									В базе более 500 моделей принтеров и МФУ. Если ваша модель
+									редкая — позвоните, уточним наличие запчастей заранее.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="faq-item" data-cat="cart">
+					<button class="faq-item__btn">
+						<div class="faq-item__left">
+							<span class="faq-item__index">08</span>
+							<span class="faq-item__question">
+								Чем отличается оригинальный картридж от совместимого?
+								<span class="faq-item__cat faq-item__cat--cart">Картриджи</span>
+							</span>
+						</div>
+						<div class="faq-item__icon">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+								stroke-linecap="round" stroke-linejoin="round">
+								<line x1="12" y1="5" x2="12" y2="19" />
+								<line x1="5" y1="12" x2="19" y2="12" />
+							</svg>
+						</div>
+					</button>
+					<div class="faq-item__body">
+						<div class="faq-item__body-inner">
+							<div class="faq-item__answer">
+								<p>
+									<strong>Оригинальный</strong> — от производителя принтера.
+									Гарантированное качество печати, максимальный ресурс, но
+									цена выше.
+								</p>
+								<p>
+									<strong>Совместимый</strong> — сторонний производитель.
+									Стоит на 30–50% дешевле. Мы используем только проверенные
+									совместимые картриджи — качество печати сопоставимо с
+									оригиналом.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="faq-item" data-cat="work">
+					<button class="faq-item__btn">
+						<div class="faq-item__left">
+							<span class="faq-item__index">09</span>
+							<span class="faq-item__question">
+								Можно ли сдать принтер в мастерскую?
+								<span class="faq-item__cat faq-item__cat--work">Работа</span>
+							</span>
+						</div>
+						<div class="faq-item__icon">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+								stroke-linecap="round" stroke-linejoin="round">
+								<line x1="12" y1="5" x2="12" y2="19" />
+								<line x1="5" y1="12" x2="19" y2="12" />
+							</svg>
+						</div>
+					</button>
+					<div class="faq-item__body">
+						<div class="faq-item__body-inner">
+							<div class="faq-item__answer">
+								<p>
+									Да, принимаем технику в мастерской по адресу:
+									<strong>Екатеринбург, ул. Ленина, 1</strong>. Работаем
+									ежедневно с 9:00 до 21:00.
+								</p>
+								<p>
+									Простые ремонты делаем при вас за 1–2 часа. Если нужно
+									больше времени — уведомим по SMS когда будет готово. Также
+									можем сами забрать и привезти технику.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="faq-item" data-cat="guarant">
+					<button class="faq-item__btn">
+						<div class="faq-item__left">
+							<span class="faq-item__index">10</span>
+							<span class="faq-item__question">
+								Что будет, если после ремонта принтер сломается снова?
+								<span class="faq-item__cat faq-item__cat--guarant">Гарантия</span>
+							</span>
+						</div>
+						<div class="faq-item__icon">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+								stroke-linecap="round" stroke-linejoin="round">
+								<line x1="12" y1="5" x2="12" y2="19" />
+								<line x1="5" y1="12" x2="19" y2="12" />
+							</svg>
+						</div>
+					</button>
+					<div class="faq-item__body">
+						<div class="faq-item__body-inner">
+							<div class="faq-item__answer">
+								<p>
+									Если в течение <strong>90 дней</strong> с даты ремонта
+									возникла та же неисправность по нашей вине — приедем и
+									устраним бесплатно. Это закреплено в гарантийном талоне.
+								</p>
+								<p>
+									Просто позвоните или напишите нам, назовите номер из
+									талона. Мастер выедет в приоритетном порядке.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="faq-item" data-cat="price">
+					<button class="faq-item__btn">
+						<div class="faq-item__left">
+							<span class="faq-item__index">11</span>
+							<span class="faq-item__question">
+								Как оплатить ремонт?
+								<span class="faq-item__cat faq-item__cat--price">Цены</span>
+							</span>
+						</div>
+						<div class="faq-item__icon">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+								stroke-linecap="round" stroke-linejoin="round">
+								<line x1="12" y1="5" x2="12" y2="19" />
+								<line x1="5" y1="12" x2="19" y2="12" />
+							</svg>
+						</div>
+					</button>
+					<div class="faq-item__body">
+						<div class="faq-item__body-inner">
+							<div class="faq-item__answer">
+								<p>
+									Принимаем <strong>наличные и карту</strong> (Visa,
+									Mastercard, Мир). Оплата производится только после
+									выполнения работ и вашей проверки результата.
+								</p>
+								<p>
+									Для юридических лиц возможна оплата по безналичному
+									расчёту с выставлением счёта и закрывающими документами.
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<div class="faq-item" data-cat="work">
+					<button class="faq-item__btn">
+						<div class="faq-item__left">
+							<span class="faq-item__index">12</span>
+							<span class="faq-item__question">
+								Работаете ли с юридическими лицами и офисами?
+								<span class="faq-item__cat faq-item__cat--work">Работа</span>
+							</span>
+						</div>
+						<div class="faq-item__icon">
+							<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+								stroke-linecap="round" stroke-linejoin="round">
+								<line x1="12" y1="5" x2="12" y2="19" />
+								<line x1="5" y1="12" x2="19" y2="12" />
+							</svg>
+						</div>
+					</button>
+					<div class="faq-item__body">
+						<div class="faq-item__body-inner">
+							<div class="faq-item__answer">
+								<p>
+									Да, активно работаем с компаниями. Предлагаем
+									<strong>договор на абонентское обслуживание</strong>
+									оргтехники — регулярная заправка, профилактика и
+									приоритетный ремонт по фиксированной стоимости.
+								</p>
+								<p>
+									Предоставляем все закрывающие документы: акты,
+									счета-фактуры, накладные.
+									<a href="/dogovor">Подробнее об обслуживании офисов →</a>
+								</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
