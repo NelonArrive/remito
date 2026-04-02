@@ -11,7 +11,7 @@ export const Logo = ({ compact = false }: LogoProps) => {
 		<Link href='/' className={styles.logo} aria-label='Remito — на главную'>
 			<div className={`${styles.icon} ${compact ? styles.iconCompact : ''}`}>
 				<Image
-					src='/img/svg/logo.svg'
+					src='/img/logo.svg'
 					alt='Remito логотип'
 					width={compact ? 34 : 40}
 					height={compact ? 34 : 40}
