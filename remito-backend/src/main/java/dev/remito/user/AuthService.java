@@ -1,9 +1,12 @@
 package dev.remito.user;
 
+import dev.remito.exception.AlreadyExistsException;
+import dev.remito.exception.ResourceNotFoundException;
+import dev.remito.exception.UnauthorizedException;
 import dev.remito.security.CookieUtil;
 import dev.remito.security.RefreshToken;
 import dev.remito.security.RefreshTokenService;
-import dev.remito.security.TokenRefreshException;
+import dev.remito.exception.TokenRefreshException;
 import dev.remito.security.jwt.JwtService;
 import dev.remito.user.auth.AuthResponse;
 import dev.remito.user.auth.LoginRequest;
@@ -52,7 +55,7 @@ public class AuthService {
 	
 	public MessageResponse signup(SignupRequest request) {
 		if (userRepository.existsByEmail(request.email)) {
-			throw new IllegalArgumentException("Email already in use");
+			throw new AlreadyExistsException("Email already in use");
 		}
 		
 		User user = User.builder()
@@ -74,7 +77,7 @@ public class AuthService {
 		RefreshToken tokenEntity = refreshTokenService.verifyExpiration(oldToken);
 		
 		User user = userRepository.findById(tokenEntity.getUserId())
-			.orElseThrow(() -> new RuntimeException("User not found"));
+			.orElseThrow(() -> new ResourceNotFoundException("User not found"));
 		
 		String newAccess = jwtService.generateAccessToken(user.getId(), user.getEmail(), user.getName());
 		String newRefresh = refreshTokenService.rotateRefreshToken(oldToken);
@@ -97,10 +100,10 @@ public class AuthService {
 	public User getCurrentUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		if (auth == null || !auth.isAuthenticated() || "anonymousUser".equals(auth.getPrincipal())) {
-			throw new RuntimeException("Not authenticated");
+			throw new UnauthorizedException("Not authenticated");
 		}
 		User user = (User) auth.getPrincipal();
 		return userRepository.findById(user.getId())
-			.orElseThrow(() -> new RuntimeException("User not found"));
+			.orElseThrow(() -> new ResourceNotFoundException("User not found"));
 	}
 }
