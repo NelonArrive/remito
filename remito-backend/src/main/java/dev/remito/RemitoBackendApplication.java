@@ -12,6 +12,7 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 	"dev.remito.product",
 	"dev.remito.category",
 	"dev.remito.brand",
+	"dev.remito.cart",
 	"dev.remito.color"
 })
 public class RemitoBackendApplication {
