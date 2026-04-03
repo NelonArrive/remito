@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-class CartItem {
+public class CartItem {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,4 +33,5 @@ class CartItem {
 	
 	@Column(nullable = false)
 	private BigDecimal priceSnapshot;
+	
 }

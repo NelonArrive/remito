@@ -76,7 +76,7 @@ public class CartService {
 		});
 	}
 	
-	Cart getCartByToken(String token) {
+	public Cart getCartByToken(String token) {
 		return cartRepository.findBySessionToken(token)
 			.orElseThrow(() -> new ResourceNotFoundException("Cart not found"));
 	}
