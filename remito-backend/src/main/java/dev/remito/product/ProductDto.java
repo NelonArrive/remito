@@ -16,20 +16,4 @@ public record ProductDto(
 	String imageUrl,
 	boolean isActive
 ) {
-	static ProductDto from(Product p) {
-		return new ProductDto(
-			p.getId(),
-			p.getName(),
-			p.getSlug(),
-			p.getDescription(),
-			p.getPrice(),
-			p.getStockQuantity(),
-			p.getCategory() != null ? p.getCategory().getName() : null,
-			p.getBrand() != null ? p.getBrand().getName() : null,
-			p.getColor() != null ? p.getColor().getName() : null,
-			p.getColor() != null ? p.getColor().getHexCode() : null,
-			p.getImageUrl(),
-			p.isActive()
-		);
-	}
 }

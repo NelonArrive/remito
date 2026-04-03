@@ -17,6 +17,7 @@ public class OrderService {
 	private final OrderRepository orderRepository;
 	private final CartService cartService;
 	private final OrderNotificationService notificationService;
+	private final OrderMapper orderMapper;
 	
 	@Transactional
 	public OrderDto checkout(String sessionToken, OrderRequest request) {
@@ -61,17 +62,17 @@ public class OrderService {
 		
 		notificationService.sendOrderNotification(saved);
 		
-		return OrderDto.from(saved);
+		return orderMapper.toDto(saved);
 	}
 	
 	public List<OrderDto> findAll() {
 		return orderRepository.findAllByOrderByCreatedAtDesc()
-			.stream().map(OrderDto::from).toList();
+			.stream().map(orderMapper::toDto).toList();
 	}
 	
 	public OrderDto findByOrderNumber(String orderNumber) {
 		return orderRepository.findByOrderNumber(orderNumber)
-			.map(OrderDto::from)
+			.map(orderMapper::toDto)
 			.orElseThrow(() -> new ResourceNotFoundException("Order not found: " + orderNumber));
 	}
 	
@@ -80,7 +81,8 @@ public class OrderService {
 		Order order = orderRepository.findById(id)
 			.orElseThrow(() -> new ResourceNotFoundException("Order not found: " + id));
 		order.setStatus(status);
-		return OrderDto.from(orderRepository.save(order));
+		Order saved = orderRepository.save(order);
+		return orderMapper.toDto(saved);
 	}
 	
 	private String generateOrderNumber() {

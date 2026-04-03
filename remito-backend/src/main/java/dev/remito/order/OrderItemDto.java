@@ -8,12 +8,4 @@ public record OrderItemDto(
 	Integer quantity,
 	BigDecimal total
 ) {
-	static OrderItemDto from(OrderItem item) {
-		return new OrderItemDto(
-			item.getNameSnapshot(),
-			item.getPriceSnapshot(),
-			item.getQuantity(),
-			item.getPriceSnapshot().multiply(BigDecimal.valueOf(item.getQuantity()))
-		);
-	}
 }

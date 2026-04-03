@@ -14,12 +14,4 @@ public record ArticleDto(
 	LocalDateTime publishedAt,
 	LocalDateTime createdAt
 ) {
-	static ArticleDto from(Article a) {
-		return new ArticleDto(
-			a.getId(), a.getTitle(), a.getSlug(),
-			a.getContent(), a.getPreviewText(), a.getCoverImage(),
-			a.getAuthor() != null ? a.getAuthor().getName() : null,
-			a.isPublished(), a.getPublishedAt(), a.getCreatedAt()
-		);
-	}
 }

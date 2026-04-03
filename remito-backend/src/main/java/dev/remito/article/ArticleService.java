@@ -19,16 +19,17 @@ public class ArticleService {
 	
 	private final ArticleRepository articleRepository;
 	private final UserRepository userRepository;
+	private final ArticleMapper articleMapper;
 	
 	public Page<ArticleDto> findPublished(int page, int size) {
 		return articleRepository.findAllByIsPublishedTrue(
 			PageRequest.of(page, size, Sort.by("publishedAt").descending())
-		).map(ArticleDto::from);
+		).map(articleMapper::toDto);
 	}
 	
 	public ArticleDto findBySlug(String slug) {
 		return articleRepository.findBySlug(slug)
-			.map(ArticleDto::from)
+			.map(articleMapper::toDto)
 			.orElseThrow(() -> new ResourceNotFoundException("Article not found: " + slug));
 	}
 	
@@ -52,7 +53,8 @@ public class ArticleService {
 			.publishedAt(request.publish() ? LocalDateTime.now() : null)
 			.build();
 		
-		return ArticleDto.from(articleRepository.save(article));
+		Article saved = articleRepository.save(article);
+		return articleMapper.toDto(saved);
 	}
 	
 	@Transactional
@@ -75,7 +77,8 @@ public class ArticleService {
 			article.setPublishedAt(LocalDateTime.now());
 		}
 		
-		return ArticleDto.from(articleRepository.save(article));
+		Article saved = articleRepository.save(article);
+		return articleMapper.toDto(saved);
 	}
 	
 	@Transactional

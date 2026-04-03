@@ -20,22 +20,4 @@ public record OrderDto(
 	List<OrderItemDto> items,
 	LocalDateTime createdAt
 ) {
-	static OrderDto from(Order order) {
-		return new OrderDto(
-			order.getId(),
-			order.getOrderNumber(),
-			order.getCustomerName(),
-			order.getCustomerEmail(),
-			order.getCustomerPhone(),
-			order.getPayerType().name(),
-			order.getPaymentMethod().name(),
-			order.getComment(),
-			order.getPickupPoint(),
-			order.getAddress(),
-			order.getStatus().name(),
-			order.getTotalAmount(),
-			order.getItems().stream().map(OrderItemDto::from).toList(),
-			order.getCreatedAt()
-		);
-	}
 }
