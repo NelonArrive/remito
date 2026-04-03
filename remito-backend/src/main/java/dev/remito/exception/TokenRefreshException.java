@@ -1,4 +1,4 @@
-package dev.remito.security;
+package dev.remito.exception;
 
 public class TokenRefreshException extends RuntimeException {
 	public TokenRefreshException(String message) {
