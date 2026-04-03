@@ -1,0 +1,44 @@
+💡 пример полный
+GET http://localhost:8080/api/products?categoryId=1&brandId=1&priceFrom=500&priceTo=1500&inStock=true&sortBy=price&sortDir=asc&page=0&size=5
+
+👉 с пагинацией и сортировкой
+GET http://localhost:8080/api/products?page=0&size=10&sortBy=price&sortDir=asc
+
+👉 с фильтрами
+GET http://localhost:8080/api/products?categoryId=1&brandId=1&priceFrom=500&priceTo=1500&inStock=true
+
+{
+  "name": "iPhone 15 Pro",
+  "slug": "iphone-15-pro",
+  "description": "Latest Apple smartphone",
+  "price": 1199.99,
+  "stockQuantity": 50,
+  "categoryId": 1,
+  "brandId": 1,
+  "colorId": 1,
+  "imageUrl": "https://example.com/iphone.jpg"
+}
+
+{
+  "name": "Samsung Galaxy S24",
+  "slug": "samsung-s24",
+  "description": "Flagship Samsung phone",
+  "price": 999.99,
+  "stockQuantity": 30,
+  "categoryId": 1,
+  "brandId": 2,
+  "colorId": 2,
+  "imageUrl": "https://example.com/samsung.jpg"
+}
+
+{
+  "name": "Nike Air Max",
+  "slug": "nike-air-max",
+  "description": "Running shoes",
+  "price": 199.99,
+  "stockQuantity": 100,
+  "categoryId": 2,
+  "brandId": 3,
+  "colorId": 3,
+  "imageUrl": "https://example.com/nike.jpg"
+}
