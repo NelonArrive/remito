@@ -2,9 +2,9 @@ package dev.remito.category;
 
 import dev.remito.exception.AlreadyExistsException;
 import dev.remito.exception.ResourceNotFoundException;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
