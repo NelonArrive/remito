@@ -9,12 +9,4 @@ public record CategoryDto(
 	String parentName,
 	boolean isActive
 ) {
-	static CategoryDto from(Category c) {
-		return new CategoryDto(
-			c.getId(), c.getName(), c.getSlug(), c.getDescription(),
-			c.getParent() != null ? c.getParent().getId() : null,
-			c.getParent() != null ? c.getParent().getName() : null,
-			c.isActive()
-		);
-	}
 }

@@ -13,10 +13,11 @@ import java.util.List;
 public class ColorService {
 	
 	private final ColorRepository colorRepository;
+	private final ColorMapper colorMapper;
 	
 	public List<ColorDto> findAll() {
 		return colorRepository.findAll().stream()
-			.map(ColorDto::from)
+			.map(colorMapper::toDto)
 			.toList();
 	}
 	
@@ -29,7 +30,9 @@ public class ColorService {
 			.name(request.name())
 			.hexCode(request.hexCode())
 			.build();
-		return ColorDto.from(colorRepository.save(color));
+		
+		Color saved = colorRepository.save(color);
+		return colorMapper.toDto(saved);
 	}
 	
 	@Transactional
@@ -38,7 +41,9 @@ public class ColorService {
 			.orElseThrow(() -> new ResourceNotFoundException("Color not found: " + id));
 		color.setName(request.name());
 		color.setHexCode(request.hexCode());
-		return ColorDto.from(colorRepository.save(color));
+		
+		Color saved = colorRepository.save(color);
+		return colorMapper.toDto(saved);
 	}
 	
 	@Transactional

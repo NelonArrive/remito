@@ -13,17 +13,18 @@ import java.util.List;
 public class BrandService {
 	
 	private final BrandRepository brandRepository;
+	private final BrandMapper brandMapper;
 	
 	public List<BrandDto> findAll() {
 		return brandRepository.findAll().stream()
 			.filter(Brand::isActive)
-			.map(BrandDto::from)
+			.map(brandMapper::toDto)
 			.toList();
 	}
 	
 	public BrandDto findById(Long id) {
 		return brandRepository.findById(id)
-			.map(BrandDto::from)
+			.map(brandMapper::toDto)
 			.orElseThrow(() -> new ResourceNotFoundException("Brand not found: " + id));
 	}
 	
@@ -36,7 +37,8 @@ public class BrandService {
 			.name(request.name())
 			.logoUrl(request.logoUrl())
 			.build();
-		return BrandDto.from(brandRepository.save(brand));
+		Brand saved = brandRepository.save(brand);
+		return brandMapper.toDto(saved);
 	}
 	
 	@Transactional
@@ -45,7 +47,8 @@ public class BrandService {
 			.orElseThrow(() -> new ResourceNotFoundException("Brand not found: " + id));
 		brand.setName(request.name());
 		brand.setLogoUrl(request.logoUrl());
-		return BrandDto.from(brandRepository.save(brand));
+		Brand saved = brandRepository.save(brand);
+		return brandMapper.toDto(saved);
 	}
 	
 	@Transactional
