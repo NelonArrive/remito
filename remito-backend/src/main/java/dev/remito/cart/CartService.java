@@ -16,10 +16,11 @@ public class CartService {
 	private final CartRepository cartRepository;
 	private final CartItemRepository cartItemRepository;
 	private final ProductRepository productRepository;
+	private final CartMapper cartMapper;
 	
 	public CartDto getOrCreate(String sessionToken) {
 		Cart cart = findOrCreate(sessionToken);
-		return CartDto.from(cart);
+		return cartMapper.toDto(cart);
 	}
 	
 	@Transactional
@@ -29,7 +30,6 @@ public class CartService {
 		Product product = productRepository.findById(request.productId())
 			.orElseThrow(() -> new ResourceNotFoundException("Product not found: " + request.productId()));
 		
-		// Если товар уже есть — увеличиваем количество
 		cart.getItems().stream()
 			.filter(i -> i.getProduct().getId().equals(request.productId()))
 			.findFirst()
@@ -44,8 +44,8 @@ public class CartService {
 						.build()
 				)
 			);
-		
-		return CartDto.from(cartRepository.save(cart));
+		Cart saved = cartRepository.save(cart);
+		return cartMapper.toDto(saved);
 	}
 	
 	@Transactional
@@ -58,14 +58,16 @@ public class CartService {
 			.orElseThrow(() -> new ResourceNotFoundException("Cart item not found: " + itemId));
 		
 		item.setQuantity(request.quantity());
-		return CartDto.from(cartRepository.save(cart));
+		Cart saved = cartRepository.save(cart);
+		return cartMapper.toDto(saved);
 	}
 	
 	@Transactional
 	public CartDto removeItem(String sessionToken, Long itemId) {
 		Cart cart = getCartByToken(sessionToken);
 		cart.getItems().removeIf(i -> i.getId().equals(itemId));
-		return CartDto.from(cartRepository.save(cart));
+		Cart saved = cartRepository.save(cart);
+		return cartMapper.toDto(saved);
 	}
 	
 	@Transactional

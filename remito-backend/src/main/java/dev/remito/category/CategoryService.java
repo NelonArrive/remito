@@ -13,17 +13,18 @@ import java.util.List;
 public class CategoryService {
 	
 	private final CategoryRepository categoryRepository;
+	private final CategoryMapper categoryMapper;
 	
 	public List<CategoryDto> findAll() {
 		return categoryRepository.findAll().stream()
 			.filter(Category::isActive)
-			.map(CategoryDto::from)
+			.map(categoryMapper::toDto)
 			.toList();
 	}
 	
 	public CategoryDto findById(Long id) {
 		return categoryRepository.findById(id)
-			.map(CategoryDto::from)
+			.map(categoryMapper::toDto)
 			.orElseThrow(() -> new ResourceNotFoundException("Category not found: " + id));
 	}
 	
@@ -40,7 +41,8 @@ public class CategoryService {
 			.parent(resolveParent(request.parentId()))
 			.build();
 		
-		return CategoryDto.from(categoryRepository.save(category));
+		Category saved = categoryRepository.save(category);
+		return categoryMapper.toDto(saved);
 	}
 	
 	@Transactional
@@ -57,7 +59,8 @@ public class CategoryService {
 		category.setDescription(request.description());
 		category.setParent(resolveParent(request.parentId()));
 		
-		return CategoryDto.from(categoryRepository.save(category));
+		Category saved = categoryRepository.save(category);
+		return categoryMapper.toDto(saved);
 	}
 	
 	@Transactional
