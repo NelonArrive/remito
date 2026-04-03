@@ -15,6 +15,8 @@ import org.springframework.scheduling.annotation.EnableAsync;
 	"dev.remito.category",
 	"dev.remito.brand",
 	"dev.remito.cart",
+	"dev.remito.order",
+	"dev.remito.article",
 	"dev.remito.color"
 })
 public class RemitoBackendApplication {
