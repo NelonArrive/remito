@@ -11,7 +11,6 @@ public class ProductSpecification {
 		return (root, query, cb) -> {
 			List<Predicate> predicates = new ArrayList<>();
 			
-			// Только активные
 			predicates.add(cb.isTrue(root.get("isActive")));
 			
 			if (f.categoryId() != null)

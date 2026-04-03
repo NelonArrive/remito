@@ -9,7 +9,10 @@ import org.springframework.data.redis.repository.configuration.EnableRedisReposi
 @EnableRedisRepositories(basePackages = "dev.remito.security")
 @EnableJpaRepositories(basePackages = {
 	"dev.remito.user",
-	"dev.remito.product"
+	"dev.remito.product",
+	"dev.remito.category",
+	"dev.remito.brand",
+	"dev.remito.color"
 })
 public class RemitoBackendApplication {
 
