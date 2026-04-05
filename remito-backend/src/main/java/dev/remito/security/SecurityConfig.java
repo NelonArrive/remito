@@ -36,6 +36,8 @@ public class SecurityConfig {
 		"/api/v1/colors/**",
 		"/api/v1/services/**",
 		"/api/v1/articles/**",
+		"/swagger-ui/**",
+		"/v3/api-docs/**"
 	};
 	
 	private static final String[] PUBLIC_POST = {
