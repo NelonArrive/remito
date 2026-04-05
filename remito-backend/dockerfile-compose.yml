@@ -15,6 +15,11 @@ services:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - backend
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U admin -d remito_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
   pgadmin:
     image: dpage/pgadmin4:latest
@@ -37,7 +42,39 @@ services:
       - "6379:6379"
     volumes:
       - redis_data:/data
+    networks:
+      - backend
 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: remito-app
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      DB_USERNAME: admin
+      DB_PASSWORD: root
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      JWT_SECRET: ${JWT_SECRET}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID}
+      GOOGLE_CLIENT_SECRET: ${GOOGLE_CLIENT_SECRET}
+      YANDEX_CLIENT_ID: ${YANDEX_CLIENT_ID}
+      YANDEX_CLIENT_SECRET: ${YANDEX_CLIENT_SECRET}
+      FRONTEND_URL: ${FRONTEND_URL}
+      MAIL_HOST: ${MAIL_HOST}
+      MAIL_USERNAME: ${MAIL_USERNAME}
+      MAIL_PASSWORD: ${MAIL_PASSWORD}
+      ADMIN_EMAIL: ${ADMIN_EMAIL}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    networks:
+      - backend
 
 volumes:
   postgres_data:
