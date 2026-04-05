@@ -38,6 +38,11 @@ public class ProductController {
 		return ResponseEntity.ok(productService.findAll(filter));
 	}
 	
+	@GetMapping("/{id}")
+	public ResponseEntity<ProductDto> getById(@PathVariable Long id) {
+		return ResponseEntity.ok(productService.findById(id));
+	}
+	
 	@GetMapping("/{slug}")
 	public ResponseEntity<ProductDto> getBySlug(@PathVariable String slug) {
 		return ResponseEntity.ok(productService.findBySlug(slug));
