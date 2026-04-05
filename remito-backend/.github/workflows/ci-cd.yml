@@ -71,7 +71,7 @@ jobs:
 
     steps:
       - name: Trigger Render Deploy
+        env:
+          deploy_url: ${{ secrets.RENDER_DEPLOY_HOOK_URL }}
         run: |
-          curl -s -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}" \
-            -o /dev/null \
-            -w "HTTP Status: %{http_code}\n"
+          curl -X POST "$deploy_url"
