@@ -20,6 +20,18 @@ spring:
       port: ${REDIS_PORT:6379}
       password: ${REDIS_PASSWORD:}
 
+  mail:
+    host: ${MAIL_HOST:smtp.gmail.com}
+    port: ${MAIL_PORT:587}
+    username: ${MAIL_USERNAME:nelon.arrive@gmail.com}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
   security:
     oauth2:
       client:
@@ -53,6 +65,15 @@ api:
 
 app:
   frontend-url: ${FRONTEND_URL:http://localhost:3000}
+  mail:
+    to: ${ADMIN_EMAIL:admin@remito.com}
 
 server:
   port: 8080
+
+springdoc:
+   swagger-ui:
+     path: /swagger-ui.html
+     tags-sorter: alpha
+   api-docs:
+     path: /v3/api-docs

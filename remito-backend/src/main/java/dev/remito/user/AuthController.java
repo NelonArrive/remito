@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 public class AuthController {
 	
 	private final AuthService authService;
+	private final UserMapper userMapper;
 	
 	@PostMapping("/login")
 	public ResponseEntity<AuthResponse> login(
@@ -49,7 +50,8 @@ public class AuthController {
 	
 	@GetMapping("/me")
 	public ResponseEntity<UserDto> me() {
-		return ResponseEntity.ok(UserDto.from(authService.getCurrentUser()));
+		User saved = authService.getCurrentUser();
+		return ResponseEntity.ok(userMapper.toDto(saved));
 	}
 	
 }

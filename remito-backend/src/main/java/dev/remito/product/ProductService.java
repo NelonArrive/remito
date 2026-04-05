@@ -22,23 +22,24 @@ public class ProductService {
 	private final CategoryRepository categoryRepository;
 	private final BrandRepository brandRepository;
 	private final ColorRepository colorRepository;
+	private final ProductMapper productMapper;
 	
 	public Page<ProductDto> findAll(ProductFilter filter) {
 		var pageable = PageRequest.of(filter.page(), filter.size());
 		return productRepository
 			.findAll(ProductSpecification.build(filter), pageable)
-			.map(ProductDto::from);
+			.map(productMapper::toDto);
 	}
 	
 	public ProductDto findBySlug(String slug) {
 		return productRepository.findBySlug(slug)
-			.map(ProductDto::from)
+			.map(productMapper::toDto)
 			.orElseThrow(() -> new ResourceNotFoundException("Product not found: " + slug));
 	}
 	
 	public ProductDto findById(Long id) {
 		return productRepository.findById(id)
-			.map(ProductDto::from)
+			.map(productMapper::toDto)
 			.orElseThrow(() -> new ResourceNotFoundException("Product not found: " + id));
 	}
 	
@@ -60,7 +61,8 @@ public class ProductService {
 			.color(request.colorId() != null ? resolveColor(request.colorId()) : null)
 			.build();
 		
-		return ProductDto.from(productRepository.save(product));
+		Product savedProduct = productRepository.save(product);
+		return productMapper.toDto(savedProduct);
 	}
 	
 	@Transactional
@@ -82,7 +84,8 @@ public class ProductService {
 		product.setBrand(request.brandId() != null ? resolveBrand(request.brandId()) : null);
 		product.setColor(request.colorId() != null ? resolveColor(request.colorId()) : null);
 		
-		return ProductDto.from(productRepository.save(product));
+		Product savedProduct = productRepository.save(product);
+		return productMapper.toDto(savedProduct);
 	}
 	
 	@Transactional
