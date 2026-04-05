@@ -1,6 +1,6 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/remito_db
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/remito_db}
     username: ${DB_USERNAME:admin}
     password: ${DB_PASSWORD:root}
     driver-class-name: org.postgresql.Driver
@@ -16,9 +16,10 @@ spring:
 
   data:
     redis:
-      host: ${REDIS_HOST:localhost}
-      port: ${REDIS_PORT:6379}
-      password: ${REDIS_PASSWORD:}
+      url: ${REDIS_URL}
+#      host: ${REDIS_HOST:localhost}
+#      port: ${REDIS_PORT:6379}
+#      password: ${REDIS_PASSWORD:}
 
   mail:
     host: ${MAIL_HOST:smtp.gmail.com}
@@ -67,6 +68,9 @@ app:
   frontend-url: ${FRONTEND_URL:http://localhost:3000}
   mail:
     to: ${ADMIN_EMAIL:admin@remito.com}
+  telegram:
+    bot-token: ${TELEGRAM_BOT_TOKEN:8528069016:AAFHGKqd99J4RAnscVoBU0R-CTLuvdZte8I}
+    chat-id: ${TELEGRAM_CHAT_ID:8258223025}
 
 server:
   port: 8080

@@ -5,6 +5,8 @@ import dev.remito.exception.ResourceNotFoundException;
 import dev.remito.user.User;
 import dev.remito.user.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+
+import static dev.remito.config.CacheConfig.CACHE_ARTICLES;
 
 @Service
 @RequiredArgsConstructor
@@ -27,12 +31,14 @@ public class ArticleService {
 		).map(articleMapper::toDto);
 	}
 	
+	@Cacheable(value = CACHE_ARTICLES, key = "'slug_' + #slug")
 	public ArticleDto findBySlug(String slug) {
 		return articleRepository.findBySlug(slug)
 			.map(articleMapper::toDto)
 			.orElseThrow(() -> new ResourceNotFoundException("Article not found: " + slug));
 	}
 	
+	@CacheEvict(value = CACHE_ARTICLES, allEntries = true)
 	@Transactional
 	public ArticleDto create(ArticleRequest request, Long authorId) {
 		if (articleRepository.existsBySlug(request.slug())) {
@@ -57,6 +63,7 @@ public class ArticleService {
 		return articleMapper.toDto(saved);
 	}
 	
+	@CacheEvict(value = CACHE_ARTICLES, allEntries = true)
 	@Transactional
 	public ArticleDto update(Long id, ArticleRequest request) {
 		Article article = articleRepository.findById(id)
@@ -81,6 +88,7 @@ public class ArticleService {
 		return articleMapper.toDto(saved);
 	}
 	
+	@CacheEvict(value = CACHE_ARTICLES, allEntries = true)
 	@Transactional
 	public void delete(Long id) {
 		if (!articleRepository.existsById(id)) {

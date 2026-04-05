@@ -3,10 +3,15 @@ package dev.remito.category;
 import dev.remito.exception.AlreadyExistsException;
 import dev.remito.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
+import static dev.remito.config.CacheConfig.CACHE_CATEGORIES;
+import static dev.remito.config.CacheConfig.CACHE_COLORS;
 
 @Service
 @RequiredArgsConstructor
@@ -15,6 +20,7 @@ public class CategoryService {
 	private final CategoryRepository categoryRepository;
 	private final CategoryMapper categoryMapper;
 	
+	@Cacheable(value = CACHE_CATEGORIES)
 	public List<CategoryDto> findAll() {
 		return categoryRepository.findAll().stream()
 			.filter(Category::isActive)
@@ -28,6 +34,7 @@ public class CategoryService {
 			.orElseThrow(() -> new ResourceNotFoundException("Category not found: " + id));
 	}
 	
+	@CacheEvict(value = CACHE_COLORS, allEntries = true)
 	@Transactional
 	public CategoryDto create(CategoryRequest request) {
 		if (categoryRepository.existsBySlug(request.slug())) {
@@ -45,6 +52,7 @@ public class CategoryService {
 		return categoryMapper.toDto(saved);
 	}
 	
+	@CacheEvict(value = CACHE_COLORS, allEntries = true)
 	@Transactional
 	public CategoryDto update(Long id, CategoryRequest request) {
 		Category category = categoryRepository.findById(id)
@@ -63,6 +71,7 @@ public class CategoryService {
 		return categoryMapper.toDto(saved);
 	}
 	
+	@CacheEvict(value = CACHE_COLORS, allEntries = true)
 	@Transactional
 	public void delete(Long id) {
 		Category category = categoryRepository.findById(id)
