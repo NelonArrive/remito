@@ -9,10 +9,14 @@ import dev.remito.color.ColorRepository;
 import dev.remito.exception.AlreadyExistsException;
 import dev.remito.exception.ResourceNotFoundException;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import static dev.remito.config.CacheConfig.CACHE_PRODUCTS;
 
 @Service
 @RequiredArgsConstructor
@@ -31,18 +35,21 @@ public class ProductService {
 			.map(productMapper::toDto);
 	}
 	
+	@Cacheable(value = CACHE_PRODUCTS, key = "'slug_' + #slug")
 	public ProductDto findBySlug(String slug) {
 		return productRepository.findBySlug(slug)
 			.map(productMapper::toDto)
 			.orElseThrow(() -> new ResourceNotFoundException("Product not found: " + slug));
 	}
 	
+	@Cacheable(value = CACHE_PRODUCTS, key = "#id")
 	public ProductDto findById(Long id) {
 		return productRepository.findById(id)
 			.map(productMapper::toDto)
 			.orElseThrow(() -> new ResourceNotFoundException("Product not found: " + id));
 	}
 	
+	@CacheEvict(value = CACHE_PRODUCTS, allEntries = true)
 	@Transactional
 	public ProductDto create(ProductRequest request) {
 		if (productRepository.existsBySlug(request.slug())) {
@@ -65,6 +72,7 @@ public class ProductService {
 		return productMapper.toDto(savedProduct);
 	}
 	
+	@CacheEvict(value = CACHE_PRODUCTS, allEntries = true)
 	@Transactional
 	public ProductDto update(Long id, ProductRequest request) {
 		Product product = productRepository.findById(id)
@@ -88,6 +96,7 @@ public class ProductService {
 		return productMapper.toDto(savedProduct);
 	}
 	
+	@CacheEvict(value = CACHE_PRODUCTS, allEntries = true)
 	@Transactional
 	public void delete(Long id) {
 		Product product = productRepository.findById(id)

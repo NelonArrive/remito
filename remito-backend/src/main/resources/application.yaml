@@ -68,6 +68,9 @@ app:
   frontend-url: ${FRONTEND_URL:http://localhost:3000}
   mail:
     to: ${ADMIN_EMAIL:admin@remito.com}
+  telegram:
+    bot-token: ${TELEGRAM_BOT_TOKEN:8528069016:AAFHGKqd99J4RAnscVoBU0R-CTLuvdZte8I}
+    chat-id: ${TELEGRAM_CHAT_ID:8258223025}
 
 server:
   port: 8080
