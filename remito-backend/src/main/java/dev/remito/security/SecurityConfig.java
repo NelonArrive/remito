@@ -2,7 +2,6 @@ package dev.remito.security;
 
 import dev.remito.security.jwt.JwtAuthFilter;
 import dev.remito.security.oauth2.OAuth2SuccessHandler;
-import dev.remito.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,9 +24,9 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @RequiredArgsConstructor
 public class SecurityConfig {
 	
+	private final RateLimitFilter rateLimitFilter;
 	private final JwtAuthFilter jwtAuthFilter;
 	private final OAuth2SuccessHandler oauth2SuccessHandler;
-	private final UserRepository userRepository;
 	
 	private static final String[] PUBLIC_GET = {
 		"/api/v1/products/**",
@@ -38,7 +37,9 @@ public class SecurityConfig {
 		"/api/v1/articles/**",
 		"/swagger-ui/**",
 		"/swagger-ui.html",
-		"/v3/api-docs/**"
+		"/v3/api-docs/**",
+		"/actuator/health",
+		"/actuator/prometheus",
 	};
 	
 	private static final String[] PUBLIC_POST = {
@@ -52,12 +53,13 @@ public class SecurityConfig {
 		http
 			.csrf(AbstractHttpConfigurer::disable)
 			.sessionManagement(s -> s.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+			.addFilterBefore(rateLimitFilter, UsernamePasswordAuthenticationFilter.class)
+			.addFilterAfter(jwtAuthFilter, RateLimitFilter.class)
 			.authorizeHttpRequests(auth -> auth
 				.requestMatchers(HttpMethod.GET,  PUBLIC_GET).permitAll()
 				.requestMatchers(HttpMethod.POST, PUBLIC_POST).permitAll()
 				.anyRequest().hasAnyRole("ADMIN", "MANAGER")
 			)
-			.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
 			.oauth2Login(oauth -> oauth
 				.successHandler(oauth2SuccessHandler)
 				.failureUrl("/api/v1/auth/oauth2/failure")

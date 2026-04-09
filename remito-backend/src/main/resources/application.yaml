@@ -1,83 +1,22 @@
 spring:
-  datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/remito_db}
-    username: ${DB_USERNAME:admin}
-    password: ${DB_PASSWORD:root}
-    driver-class-name: org.postgresql.Driver
-
-  jpa:
-    hibernate:
-      ddl-auto: update
-    show-sql: false
-
-  flyway:
-    enabled: true
-    locations: classpath:db/migration
-
-  data:
-    redis:
-      url: ${REDIS_URL}
-#      host: ${REDIS_HOST:localhost}
-#      port: ${REDIS_PORT:6379}
-#      password: ${REDIS_PASSWORD:}
-
-  mail:
-    host: ${MAIL_HOST:smtp.gmail.com}
-    port: ${MAIL_PORT:587}
-    username: ${MAIL_USERNAME:nelon.arrive@gmail.com}
-    password: ${MAIL_PASSWORD:}
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
-
-  security:
-    oauth2:
-      client:
-        registration:
-          google:
-            client-id: ${GOOGLE_CLIENT_ID:GOOGLE_CLIENT_ID}
-            client-secret: ${GOOGLE_CLIENT_SECRET:GOOGLE_CLIENT_SECRET}
-            scope: [ email, profile ]
-            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
-          yandex:
-            client-id: ${YANDEX_CLIENT_ID:YANDEX_CLIENT_ID}
-            client-secret: ${YANDEX_CLIENT_SECRET:YANDEX_CLIENT_SECRET}
-            client-name: Yandex
-            authorization-grant-type: authorization_code
-            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
-            scope: [ login:email, login:info ]
-        provider:
-          yandex:
-            authorization-uri: https://oauth.yandex.ru/authorize
-            token-uri: https://oauth.yandex.ru/token
-            user-info-uri: https://login.yandex.ru/info
-            user-name-attribute: id
-
-jwt:
-  secret: ${JWT_SECRET:dGhpcyBpcyBhIHZlcnkgc2VjcmV0IGtleSBmb3IgcmVtaXRv}
-  access-token-expiration-ms: 900000       # 15 минут
-  refresh-token-expiration-ms: 2592000000  # 30 дней
-
-api:
-  prefix: /api/v1
-
-app:
-  frontend-url: ${FRONTEND_URL:http://localhost:3000}
-  mail:
-    to: ${ADMIN_EMAIL:admin@remito.com}
-  telegram:
-    bot-token: ${TELEGRAM_BOT_TOKEN:8528069016:AAFHGKqd99J4RAnscVoBU0R-CTLuvdZte8I}
-    chat-id: ${TELEGRAM_CHAT_ID:8258223025}
+  profiles:
+    default: dev
 
 server:
   port: 8080
 
-springdoc:
-   swagger-ui:
-     path: /swagger-ui.html
-     tags-sorter: alpha
-   api-docs:
-     path: /v3/api-docs
+api:
+  prefix: /api/v1
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health, info, prometheus, metrics
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: when-authorized
+  metrics:
+    tags:
+      application: remito

@@ -2,9 +2,10 @@ plugins {
     java
     id("org.springframework.boot") version "4.0.3"
     id("io.spring.dependency-management") version "1.1.7"
-    kotlin("jvm") version "1.9.24"
-    kotlin("plugin.spring") version "1.9.24"
-    kotlin("plugin.jpa") version "1.9.24"
+
+    kotlin("jvm") version "2.0.21"
+    kotlin("plugin.spring") version "2.0.21"
+    kotlin("plugin.jpa") version "2.0.21"
 }
 
 group = "dev.nelon"
@@ -66,6 +67,16 @@ dependencies {
 
     // Swagger
     implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:3.0.2")
+
+    // Actuator
+    implementation("org.springframework.boot:spring-boot-starter-actuator")
+
+    // Micrometer
+    implementation("io.micrometer:micrometer-registry-prometheus")
+
+    // bucket4j
+    implementation("com.bucket4j:bucket4j-core:8.10.1")
+    implementation("com.bucket4j:bucket4j-redis:8.10.1")
 
     // Dev tools
     developmentOnly("org.springframework.boot:spring-boot-devtools")

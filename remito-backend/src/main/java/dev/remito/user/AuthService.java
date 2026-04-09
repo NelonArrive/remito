@@ -2,11 +2,11 @@ package dev.remito.user;
 
 import dev.remito.exception.AlreadyExistsException;
 import dev.remito.exception.ResourceNotFoundException;
+import dev.remito.exception.TokenRefreshException;
 import dev.remito.exception.UnauthorizedException;
 import dev.remito.security.CookieUtil;
 import dev.remito.security.RefreshToken;
 import dev.remito.security.RefreshTokenService;
-import dev.remito.exception.TokenRefreshException;
 import dev.remito.security.jwt.JwtService;
 import dev.remito.user.auth.AuthResponse;
 import dev.remito.user.auth.LoginRequest;
@@ -17,9 +17,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -36,21 +38,29 @@ public class AuthService {
 	private final CookieUtil cookieUtil;
 	
 	public AuthResponse login(LoginRequest request, HttpServletResponse response) {
-		Authentication auth = authenticationManager.authenticate(
-			new UsernamePasswordAuthenticationToken(request.email, request.password)
-		);
-		SecurityContextHolder.getContext().setAuthentication(auth);
-		
-		User user = (User) auth.getPrincipal();
-		
-		String accessToken = jwtService.generateAccessToken(user);
-		String refreshToken = refreshTokenService.createRefreshToken(user.getId());
-		
-		cookieUtil.setAccessTokenCookie(response, accessToken);
-		cookieUtil.setRefreshTokenCookie(response, refreshToken);
-		
-		log.info("Login: {}", user.getEmail());
-		return new AuthResponse(user.getId(), user.getEmail(), user.getName());
+		try {
+			Authentication auth = authenticationManager.authenticate(
+				new UsernamePasswordAuthenticationToken(request.email, request.password)
+			);
+			
+			SecurityContextHolder.getContext().setAuthentication(auth);
+			
+			User user = (User) auth.getPrincipal();
+			
+			String accessToken = jwtService.generateAccessToken(user);
+			String refreshToken = refreshTokenService.createRefreshToken(user.getId());
+			
+			cookieUtil.setAccessTokenCookie(response, accessToken);
+			cookieUtil.setRefreshTokenCookie(response, refreshToken);
+			
+			log.info("Login: {}", user.getEmail());
+			return new AuthResponse(user.getId(), user.getEmail(), user.getName());
+			
+		} catch (BadCredentialsException ex) {
+			throw new UnauthorizedException("Invalid email or password");
+		} catch (UsernameNotFoundException ex) {
+			throw new ResourceNotFoundException("User not found");
+		}
 	}
 	
 	public MessageResponse signup(SignupRequest request) {
