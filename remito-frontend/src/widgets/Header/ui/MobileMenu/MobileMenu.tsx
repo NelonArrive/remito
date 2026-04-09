@@ -1,6 +1,8 @@
 'use client'
 
-import { Button, Logo } from '@/shared/ui'
+import { Button } from '@/shared/ui/Button'
+import { IconClose } from '@/shared/ui/Icons'
+import { Logo } from '@/shared/ui/Logo'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styles from './MobileMenu.module.scss'
@@ -48,28 +50,13 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
 			aria-modal='true'
 			aria-label='Меню навигации'
 		>
-			{/* Overlay */}
 			<div className={styles.overlay} onClick={onClose} />
 
-			{/* Panel */}
 			<div className={styles.panel}>
-				{/* Head */}
 				<div className={styles.head}>
 					<Logo compact />
 					<button className={styles.close} onClick={onClose} aria-label='Закрыть меню'>
-						<svg
-							width='18'
-							height='18'
-							viewBox='0 0 24 24'
-							fill='none'
-							stroke='currentColor'
-							strokeWidth='2.5'
-							strokeLinecap='round'
-							strokeLinejoin='round'
-						>
-							<line x1='18' y1='6' x2='6' y2='18' />
-							<line x1='6' y1='6' x2='18' y2='18' />
-						</svg>
+						<IconClose />
 					</button>
 				</div>
 
@@ -81,9 +68,7 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
 					<span className={styles.phoneSub}>Бесплатный вызов мастера</span>
 				</div>
 
-				{/* Nav */}
 				<nav className={styles.nav}>
-					{/* Услуги — с аккордеоном */}
 					<div>
 						<button className={styles.link} onClick={() => setServicesOpen(v => !v)} aria-expanded={servicesOpen}>
 							Услуги

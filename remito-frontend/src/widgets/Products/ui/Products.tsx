@@ -2,12 +2,10 @@
 
 import Link from 'next/link'
 import { useMemo, useState } from 'react'
-import 'swiper/css'
-import 'swiper/css/free-mode'
 import { FreeMode, Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import { IconArrowRight } from '@/shared/ui/icons'
+import { IconArrowRight } from '@/shared/ui/Icons'
 import { products, tabs } from '../model/products.data'
 import { Category } from '../model/products.types'
 import { ProductCard } from './ProductCard/ProductCard'

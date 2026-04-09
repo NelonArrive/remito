@@ -1,14 +1,16 @@
-export function IconInfo() {
+import { IconProps } from './icon.types'
+
+export function IconInfo({ size = 24, color = 'currentColor', stroke = 1.8 }: IconProps) {
 	return (
 		<svg
-			width='26'
-			height='26'
+			width={size}
+			height={size}
 			viewBox='0 0 24 24'
 			fill='none'
-			stroke='currentColor'
-			stroke-width='1.8'
-			stroke-linecap='round'
-			stroke-linejoin='round'
+			stroke={color}
+			strokeWidth={stroke}
+			strokeLinecap='round'
+			strokeLinejoin='round'
 		>
 			<circle cx='12' cy='12' r='10' />
 			<line x1='12' y1='8' x2='12' y2='12' />

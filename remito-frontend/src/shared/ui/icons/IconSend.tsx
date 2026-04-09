@@ -1,12 +1,14 @@
-export function IconSend() {
+import { IconProps } from './icon.types'
+
+export function IconSend({ size = 24, color = 'currentColor', stroke = 1.8 }: IconProps) {
 	return (
 		<svg
-			width='15'
-			height='15'
+			width={size}
+			height={size}
 			viewBox='0 0 24 24'
 			fill='none'
-			stroke='currentColor'
-			strokeWidth='2.5'
+			stroke={color}
+			strokeWidth={stroke}
 			strokeLinecap='round'
 			strokeLinejoin='round'
 		>

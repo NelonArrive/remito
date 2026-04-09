@@ -1,13 +1,14 @@
 'use client'
 
-import { Button, Logo } from '@/shared/ui'
-import { IconPhone } from '@/shared/ui/icons'
 import { useState } from 'react'
 import { Burger } from './Burger/Burger'
 import styles from './Header.module.scss'
 import { MobileMenu } from './MobileMenu/MobileMenu'
 import { Nav } from './Nav/Nav'
 import { Topbar } from './Topbar/Topbar'
+import { Logo } from '@/shared/ui/Logo'
+import { Button } from '@/shared/ui/Button'
+import { IconPhone } from '@/shared/ui/Icons'
 
 export const Header = () => {
 	const [menuOpen, setMenuOpen] = useState(false)

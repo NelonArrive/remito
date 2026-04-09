@@ -1,3 +1,4 @@
+import { IconCart } from '@/shared/ui/Icons'
 import Link from 'next/link'
 import { Product } from '../../model/products.types'
 import styles from './ProductCard.module.scss'
@@ -19,7 +20,6 @@ export const ProductCard = ({ product, onQuickView }: ProductCardProps) => {
 
 	return (
 		<div className={styles.card}>
-			{/* Бейджи */}
 			{badges.length > 0 && (
 				<div className={styles.badges}>
 					{badges.map(b => (
@@ -30,7 +30,6 @@ export const ProductCard = ({ product, onQuickView }: ProductCardProps) => {
 				</div>
 			)}
 
-			{/* Визуал */}
 			<div className={styles.visual} style={visualBg ? { background: visualBg } : undefined}>
 				<span className={styles.visualImg} aria-hidden>
 					🖨️
@@ -40,7 +39,6 @@ export const ProductCard = ({ product, onQuickView }: ProductCardProps) => {
 				</button>
 			</div>
 
-			{/* Тело */}
 			<div className={styles.body}>
 				<span className={styles.brand}>{brand}</span>
 				<h3 className={styles.title}>{title}</h3>

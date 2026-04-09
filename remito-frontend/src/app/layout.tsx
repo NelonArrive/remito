@@ -1,9 +1,10 @@
-import '@/shared/styles/globals.scss'
-import { CookieBanner } from '@/shared/ui'
+import { CookieBanner } from '@/shared/ui/CookieBanner'
 import { Footer } from '@/widgets/Footer'
 import { Header } from '@/widgets/Header'
 import type { Metadata } from 'next'
 import { Golos_Text } from 'next/font/google'
+
+import '@/shared/styles/globals.scss'
 
 const golos = Golos_Text({
 	subsets: ['latin', 'cyrillic'],

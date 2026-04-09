@@ -1,14 +1,16 @@
-export function IconCheck() {
+import { IconProps } from './icon.types'
+
+export function IconCheck({ size = 24, color = 'currentColor', stroke = 1.8 }: IconProps) {
 	return (
 		<svg
-			width='26'
-			height='26'
+			width={size}
+			height={size}
 			viewBox='0 0 24 24'
 			fill='none'
-			stroke='currentColor'
-			stroke-width='1.8'
-			stroke-linecap='round'
-			stroke-linejoin='round'
+			stroke={color}
+			strokeWidth={stroke}
+			strokeLinecap='round'
+			strokeLinejoin='round'
 		>
 			<path d='M22 11.08V12a10 10 0 1 1-5.93-9.14' />
 			<polyline points='22 4 12 14.01 9 11.01' />

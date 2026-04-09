@@ -1,3 +1,4 @@
+import { Button } from '@/shared/ui/Button'
 import {
 	IconArrowRight,
 	IconChat,
@@ -9,179 +10,167 @@ import {
 	IconPhone,
 	IconShield,
 	IconTool
-} from '@/shared/ui/icons'
+} from '@/shared/ui/Icons'
+import Link from 'next/link'
+import s from './How.module.scss'
 
 export function How() {
 	return (
-		<section className='how'>
-			{/* <!-- Декор-линия --> */}
-			<div className='how__bg-line'></div>
+		<section className={s.section}>
+			<div className={s.bgLine} aria-hidden />
 
-			<div className='container'>
-				{/* <!-- Шапка --> */}
-				<div className='how__head'>
-					<div className='how__head-left'>
-						<span className='section-tag'>Как мы работаем</span>
-						<h2 className='section-title'>
+			<div className={s.container}>
+				{/* Head */}
+				<div className={s.head}>
+					<div className={s.headLeft}>
+						<span className={s.tag}>Как мы работаем</span>
+						<h2 className={s.title}>
 							Просто, быстро,
 							<br />
 							<span>без лишних слов</span>
 						</h2>
-						<p className='section-desc'>
+						<p className={s.desc}>
 							От звонка до готового устройства — всего 5 шагов. Большинство ремонтов занимает 1–2 часа прямо у вас.
 						</p>
 					</div>
-					<button data-popup='open' className='btn-cta'>
-						<IconPhone />
+					<Button variant='cta' data-popup='open' icon={<IconPhone size={15} />}>
 						Вызвать мастера
-					</button>
+					</Button>
 				</div>
 
-				{/* <!-- 5 шагов --> */}
-				<div className='how__steps'>
-					{/* <!-- 1 --> */}
-					<div className='how-step' style={{ '--step-color': '#3A86FF' } as React.CSSProperties}>
-						<div className='how-step__circle'>
-							<IconPhone />
-							<span className='how-step__num'>1</span>
+				{/* Steps */}
+				<div className={s.steps}>
+					<div className={s.step} style={{ '--step-color': '#3A86FF' } as React.CSSProperties}>
+						<div className={s.circle}>
+							<IconPhone size={26} />
+							<span className={s.stepNum}>1</span>
 						</div>
-						<h3 className='how-step__title'>Вы звоните или оставляете заявку</h3>
-						<p className='how-step__desc'>Звоните по телефону, пишите в мессенджер или заполняете форму на сайте</p>
-						<span className='how-step__time'>
-							<IconClock /> 2 минуты
+						<h3 className={s.stepTitle}>Вы звоните или оставляете заявку</h3>
+						<p className={s.stepDesc}>Звоните по телефону, пишите в мессенджер или заполняете форму на сайте</p>
+						<span className={s.stepTime}>
+							<IconClock size={11} /> 2 минуты
 						</span>
 					</div>
 
-					{/* <!-- 2 --> */}
-					<div className='how-step' style={{ '--step-color': '#8B5CF6' } as React.CSSProperties}>
-						<div className='how-step__circle'>
-							<IconChat />
-							<span className='how-step__num'>2</span>
+					<div className={s.step} style={{ '--step-color': '#8B5CF6' } as React.CSSProperties}>
+						<div className={s.circle}>
+							<IconChat size={26} />
+							<span className={s.stepNum}>2</span>
 						</div>
-						<h3 className='how-step__title'>Мы перезваниваем за 15 минут</h3>
-						<p className='how-step__desc'>Уточняем проблему и договариваемся об удобном времени выезда мастера</p>
-						<span className='how-step__time'>
-							<IconClock />
-							15 минут
+						<h3 className={s.stepTitle}>Мы перезваниваем за 15 минут</h3>
+						<p className={s.stepDesc}>Уточняем проблему и договариваемся об удобном времени выезда мастера</p>
+						<span className={s.stepTime}>
+							<IconClock size={11} /> 15 минут
 						</span>
 					</div>
 
-					{/* <!-- 3 --> */}
-					<div className='how-step' style={{ '--step-color': '#F97316' } as React.CSSProperties}>
-						<div className='how-step__circle'>
-							<IconInfo />
-							<span className='how-step__num'>3</span>
+					<div className={s.step} style={{ '--step-color': '#F97316' } as React.CSSProperties}>
+						<div className={s.circle}>
+							<IconInfo size={26} />
+							<span className={s.stepNum}>3</span>
 						</div>
-						<h3 className='how-step__title'>Мастер приезжает и делает диагностику</h3>
-						<p className='how-step__desc'>Выезд в течение 1 часа. Бесплатная диагностика и озвучивание стоимости</p>
-						<span className='how-step__time'>
-							<IconClock /> 1 час выезд
+						<h3 className={s.stepTitle}>Мастер приезжает и делает диагностику</h3>
+						<p className={s.stepDesc}>Выезд в течение 1 часа. Бесплатная диагностика и озвучивание стоимости</p>
+						<span className={s.stepTime}>
+							<IconClock size={11} /> 1 час выезд
 						</span>
 					</div>
 
-					{/* <!-- 4 --> */}
-					<div className='how-step' style={{ '--step-color': '#22C55E' } as React.CSSProperties}>
-						<div className='how-step__circle'>
-							<IconTool />
-							<span className='how-step__num'>4</span>
+					<div className={s.step} style={{ '--step-color': '#22C55E' } as React.CSSProperties}>
+						<div className={s.circle}>
+							<IconTool size={26} />
+							<span className={s.stepNum}>4</span>
 						</div>
-						<h3 className='how-step__title'>Ремонт с вашего согласия</h3>
-						<p className='how-step__desc'>
+						<h3 className={s.stepTitle}>Ремонт с вашего согласия</h3>
+						<p className={s.stepDesc}>
 							Только после вашего подтверждения приступаем к работе. Большинство ремонтов — прямо у вас
 						</p>
-						<span className='how-step__time'>
-							<IconClock />
-							1–3 часа
+						<span className={s.stepTime}>
+							<IconClock size={11} /> 1–3 часа
 						</span>
 					</div>
 
-					{/* <!-- 5 --> */}
-					<div className='how-step' style={{ '--step-color': '#FBBF24' } as React.CSSProperties}>
-						<div className='how-step__circle'>
-							<IconCheck />
-							<span className='how-step__num'>5</span>
+					<div className={s.step} style={{ '--step-color': '#FBBF24' } as React.CSSProperties}>
+						<div className={s.circle}>
+							<IconCheck size={26} />
+							<span className={s.stepNum}>5</span>
 						</div>
-						<h3 className='how-step__title'>Готово — выдаём гарантию</h3>
-						<p className='how-step__desc'>
+						<h3 className={s.stepTitle}>Готово — выдаём гарантию</h3>
+						<p className={s.stepDesc}>
 							Проверяем работу устройства вместе с вами и выдаём гарантийный талон на 90 дней
 						</p>
-						<span className='how-step__time'>
-							<IconShield />
-							Гарантия 90 дней
+						<span className={s.stepTime}>
+							<IconShield size={11} /> Гарантия 90 дней
 						</span>
 					</div>
 				</div>
 
-				{/* <!-- Нижние 2 карточки: выезд vs самовывоз --> */}
-				<div className='how__bottom'>
-					{/* <!-- Выезд на дом/в офис --> */}
-					<div className='how-mode' style={{ '--step-color': '#3A86FF' } as React.CSSProperties}>
-						<div className='how-mode__head'>
-							<div className='how-mode__icon'>
-								<IconLightning />
+				{/* Bottom cards */}
+				<div className={s.bottom}>
+					<div className={s.mode} style={{ '--step-color': '#3A86FF' } as React.CSSProperties}>
+						<div className={s.modeHead}>
+							<div className={s.modeIcon}>
+								<IconLightning size={24} />
 							</div>
 							<div>
-								<div className='how-mode__title'>Выезд к вам</div>
-								<div className='how-mode__sub'>Домой или в офис — бесплатно</div>
+								<div className={s.modeTitle}>Выезд к вам</div>
+								<div className={s.modeSub}>Домой или в офис — бесплатно</div>
 							</div>
 						</div>
-						<div className='how-mode__list'>
-							<div className='how-mode__item'>
-								<span className='how-mode__item-dot'></span>
+						<ul className={s.modeList}>
+							<li className={s.modeItem}>
+								<span className={s.modeDot} />
 								Мастер приедет в течение 1 часа после звонка
-							</div>
-							<div className='how-mode__item'>
-								<span className='how-mode__item-dot'></span>
+							</li>
+							<li className={s.modeItem}>
+								<span className={s.modeDot} />
 								Ремонт производится прямо у вас — не нужно никуда везти
-							</div>
-							<div className='how-mode__item'>
-								<span className='how-mode__item-dot'></span>
+							</li>
+							<li className={s.modeItem}>
+								<span className={s.modeDot} />
 								Работаем по всему Екатеринбургу, выезд бесплатный
-							</div>
-							<div className='how-mode__item'>
-								<span className='how-mode__item-dot'></span>
+							</li>
+							<li className={s.modeItem}>
+								<span className={s.modeDot} />
 								Если нужна мастерская — заберём и привезём сами
-							</div>
-						</div>
-						<button data-popup='open' className='how-mode__cta'>
-							Вызвать мастера
-							<IconArrowRight />
+							</li>
+						</ul>
+						<button className={s.modeCta} data-popup='open'>
+							Вызвать мастера <IconArrowRight size={14} />
 						</button>
 					</div>
 
-					{/* <!-- Самовывоз / мастерская --> */}
-					<div className='how-mode' style={{ '--step-color': '#22C55E' } as React.CSSProperties}>
-						<div className='how-mode__head'>
-							<div className='how-mode__icon'>
-								<IconHome />
+					<div className={s.mode} style={{ '--step-color': '#22C55E' } as React.CSSProperties}>
+						<div className={s.modeHead}>
+							<div className={s.modeIcon}>
+								<IconHome size={24} />
 							</div>
 							<div>
-								<div className='how-mode__title'>Привезти в мастерскую</div>
-								<div className='how-mode__sub'>Екатеринбург, ул. Ленина, 1</div>
+								<div className={s.modeTitle}>Привезти в мастерскую</div>
+								<div className={s.modeSub}>Екатеринбург, ул. Ленина, 1</div>
 							</div>
 						</div>
-						<div className='how-mode__list'>
-							<div className='how-mode__item'>
-								<span className='how-mode__item-dot'></span>
+						<ul className={s.modeList}>
+							<li className={s.modeItem}>
+								<span className={s.modeDot} />
 								Принимаем технику каждый день с 9:00 до 21:00
-							</div>
-							<div className='how-mode__item'>
-								<span className='how-mode__item-dot'></span>
+							</li>
+							<li className={s.modeItem}>
+								<span className={s.modeDot} />
 								Диагностика при вас — сразу скажем что сломалось и сколько стоит
-							</div>
-							<div className='how-mode__item'>
-								<span className='how-mode__item-dot'></span>
+							</li>
+							<li className={s.modeItem}>
+								<span className={s.modeDot} />
 								Простые ремонты делаем за 1–2 часа пока вы ждёте
-							</div>
-							<div className='how-mode__item'>
-								<span className='how-mode__item-dot'></span>
+							</li>
+							<li className={s.modeItem}>
+								<span className={s.modeDot} />
 								Уведомим по SMS или в мессенджер когда готово
-							</div>
-						</div>
-						<a href='/kontakty' className='how-mode__cta'>
-							Адрес на карте
-							<IconArrowRight />
-						</a>
+							</li>
+						</ul>
+						<Link href='/kontakty/' className={s.modeCta}>
+							Адрес на карте <IconArrowRight size={14} />
+						</Link>
 					</div>
 				</div>
 			</div>

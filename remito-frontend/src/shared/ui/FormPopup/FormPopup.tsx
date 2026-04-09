@@ -3,16 +3,16 @@
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import {
-	IconBolt,
 	IconCheck,
 	IconClock,
 	IconClose,
 	IconInfo,
+	IconLightning,
 	IconPhone,
 	IconSend,
 	IconShield,
 	IconSpinner
-} from '../icons'
+} from '../Icons'
 import styles from './FormPopup.module.scss'
 
 interface FormData {
@@ -112,7 +112,7 @@ export const FormPopup = ({ isOpen, onClose }: FormPopupProps) => {
 								<p className={styles.subtitle}>Заполните форму — перезвоним за 15 минут</p>
 								<div className={styles.perks}>
 									<span className={styles.perk}>
-										<IconBolt /> Выезд за 1 час
+										<IconLightning /> Выезд за 1 час
 									</span>
 									<span className={styles.perk}>
 										<IconShield /> Гарантия 90 дней
@@ -282,7 +282,7 @@ export const FormPopup = ({ isOpen, onClose }: FormPopupProps) => {
 								</div>
 								<div className={styles.successInfoRow}>
 									<div className={styles.successInfoIcon} style={{ background: '#FFF7ED', color: '#F97316' }}>
-										<IconBolt size={16} />
+										<IconShield size={16} />
 									</div>
 									<div className={styles.successInfoText}>
 										<span className={styles.successInfoLabel}>Выезд мастера</span>

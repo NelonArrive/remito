@@ -1,12 +1,14 @@
-export function IconClock() {
+import { IconProps } from './icon.types'
+
+export function IconClock({ size = 24, color = 'currentColor', stroke = 1.8 }: IconProps) {
 	return (
 		<svg
-			width='16'
-			height='16'
+			width={size}
+			height={size}
 			viewBox='0 0 24 24'
 			fill='none'
-			stroke='currentColor'
-			strokeWidth='2'
+			stroke={color}
+			strokeWidth={stroke}
 			strokeLinecap='round'
 			strokeLinejoin='round'
 		>
