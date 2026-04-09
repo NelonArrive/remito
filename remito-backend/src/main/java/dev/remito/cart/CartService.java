@@ -14,7 +14,6 @@ import java.util.UUID;
 public class CartService {
 	
 	private final CartRepository cartRepository;
-	private final CartItemRepository cartItemRepository;
 	private final ProductRepository productRepository;
 	private final CartMapper cartMapper;
 	
@@ -83,6 +82,10 @@ public class CartService {
 			.orElseThrow(() -> new ResourceNotFoundException("Cart not found"));
 	}
 	
+	public static String generateToken() {
+		return UUID.randomUUID().toString();
+	}
+	
 	private Cart findOrCreate(String token) {
 		return cartRepository.findBySessionToken(token)
 			.orElseGet(() -> cartRepository.save(
@@ -90,9 +93,5 @@ public class CartService {
 					.sessionToken(token != null ? token : UUID.randomUUID().toString())
 					.build()
 			));
-	}
-	
-	public static String generateToken() {
-		return UUID.randomUUID().toString();
 	}
 }
