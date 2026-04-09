@@ -39,7 +39,7 @@ public class SecurityConfig {
 		"/swagger-ui.html",
 		"/v3/api-docs/**",
 		"/actuator/health",
-		"/actuator/prometheus",
+		"/actuator/prometheus"
 	};
 	
 	private static final String[] PUBLIC_POST = {
