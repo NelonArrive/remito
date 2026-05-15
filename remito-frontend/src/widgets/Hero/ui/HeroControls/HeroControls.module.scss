@@ -1,0 +1,62 @@
+// widgets/Hero/ui/HeroControls/HeroControls.module.scss
+
+.controls {
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	padding: 20px 40px;
+	background: var(--color-dark);
+	border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+	@media (max-width: 640px) {
+		padding: 16px 20px;
+	}
+}
+
+// ---- Progress bar ----
+.progress {
+	flex: 1;
+	height: 3px;
+	background: rgba(255, 255, 255, 0.12);
+	border-radius: var(--radius-full);
+	overflow: hidden;
+}
+
+.progressBar {
+	height: 100%;
+	background: var(--color-accent);
+	border-radius: var(--radius-full);
+	width: 0%;
+	transition: width 0.4s ease;
+}
+
+// ---- Nav buttons ----
+.nav {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex-shrink: 0;
+}
+
+.navBtn {
+	width: 40px;
+	height: 40px;
+	border-radius: var(--radius-md);
+	border: 1.5px solid rgba(255, 255, 255, 0.15);
+	background: rgba(255, 255, 255, 0.06);
+	color: rgba(255, 255, 255, 0.7);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition:
+		border-color var(--transition),
+		background var(--transition),
+		color var(--transition);
+
+	&:hover {
+		border-color: rgba(255, 255, 255, 0.4);
+		background: rgba(255, 255, 255, 0.12);
+		color: #fff;
+	}
+}

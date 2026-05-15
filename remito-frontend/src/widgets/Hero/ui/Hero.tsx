@@ -5,9 +5,6 @@ import type { Swiper as SwiperType } from 'swiper'
 import { Autoplay, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import 'swiper/css'
-import 'swiper/css/pagination'
-
 import { heroSlides } from '../model/heroSlides'
 import styles from './Hero.module.scss'
 import { HeroControls } from './HeroControls/HeroControls'

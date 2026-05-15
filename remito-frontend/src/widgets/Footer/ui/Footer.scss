@@ -161,7 +161,7 @@
 }
 
 .footer__logo-icon {
-	padding: 8px;
+	padding: 6px;
 	background: var(--color-bg-gray);
 	border-radius: var(--radius-md);
 	display: flex;
@@ -170,9 +170,9 @@
 	flex-shrink: 0;
 	transition: background var(--transition);
 
-	svg {
-		width: 30px;
-		height: 30px;
+	img {
+		width: 25px;
+		height: 25px;
 	}
 }
 

@@ -3,7 +3,7 @@ import styles from './HeroControls.module.scss'
 interface HeroControlsProps {
 	onPrev: () => void
 	onNext: () => void
-	progressRef: React.RefObject<HTMLDivElement>
+	progressRef: React.RefObject<HTMLDivElement | null>
 }
 
 export function HeroControls({ onPrev, onNext, progressRef }: HeroControlsProps) {

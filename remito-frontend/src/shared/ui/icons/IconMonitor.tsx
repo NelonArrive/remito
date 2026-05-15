@@ -3,12 +3,12 @@ import { IconProps } from './icon.types'
 export function IconMonitor({ size = 24, color = 'currentColor', stroke = 1.8 }: IconProps) {
 	return (
 		<svg
-			width={size}
-			height={size}
 			viewBox='0 0 24 24'
 			fill='none'
 			stroke={color}
 			strokeWidth={stroke}
+			width={size}
+			height={size}
 			strokeLinecap='round'
 			strokeLinejoin='round'
 		>

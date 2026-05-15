@@ -1,0 +1,35 @@
+.hero {
+	position: relative;
+	overflow: hidden;
+	background: var(--color-dark);
+}
+
+.swiper {
+	width: 100%;
+}
+
+// Swiper pagination bullets — переопределяем глобально через :global
+.pagination {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	padding: 0 0 20px;
+
+	:global(.swiper-pagination-bullet) {
+		width: 8px;
+		height: 8px;
+		background: rgba(255, 255, 255, 0.3);
+		opacity: 1;
+		border-radius: 4px;
+		transition:
+			width 0.3s ease,
+			background 0.3s ease;
+		margin: 0 !important;
+	}
+
+	:global(.swiper-pagination-bullet-active) {
+		width: 24px;
+		background: #fff;
+	}
+}
