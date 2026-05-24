@@ -12,14 +12,14 @@ export function HomePage() {
 	return (
 		<>
 			<Hero />
-			<Advantages />
 			<Services />
+			<Advantages />
 			<How />
 			<Products />
-			{/* <Reviews /> */}
+			<Reviews />
 			<Brands />
 			<FAQ />
-			{/* <FormSend /> */}
+			<FormSend />
 		</>
 	)
 }

@@ -1,3 +1,5 @@
+import './FormSend.scss'
+
 export function FormSend() {
 	return (
 		<section className='form-section' id='zayavka'>
@@ -23,7 +25,7 @@ export function FormSend() {
 
 						<div className='form-section__guarantees'>
 							<div className='form-guarantee'>
-								<div className='form-guarantee__icon' style='background:rgba(58,134,255,.15); color:#60A5FA;'>
+								<div className='form-guarantee__icon' style={{ background: 'rgba(58,134,255,.15)', color: '#60A5FA' }}>
 									<svg
 										width='18'
 										height='18'
@@ -44,7 +46,10 @@ export function FormSend() {
 							</div>
 
 							<div className='form-guarantee'>
-								<div className='form-guarantee__icon' style='background:rgba(34,197,94,.15); color:#4ADE80;'>
+								<div
+									className='form-guarantee__icon'
+									style={{ background: 'rgba(34, 197, 94, 0.15)', color: '#4ADE80' }}
+								>
 									<svg
 										width='18'
 										height='18'
@@ -65,7 +70,7 @@ export function FormSend() {
 							</div>
 
 							<div className='form-guarantee'>
-								<div className='form-guarantee__icon' style='background:rgba(249,115,22,.15); color:#FB923C;'>
+								<div className='form-guarantee__icon' style={{ background: 'rgba(249,115,22,.15)', color: '#FB923C' }}>
 									<svg
 										width='18'
 										height='18'
@@ -87,7 +92,7 @@ export function FormSend() {
 							</div>
 
 							<div className='form-guarantee'>
-								<div className='form-guarantee__icon' style='background:rgba(196,130,252,.15); color:#C084FC;'>
+								<div className='form-guarantee__icon' style={{ background: 'rgba(196,130,252,.15)', color: '#C084FC' }}>
 									<svg
 										width='18'
 										height='18'
@@ -183,10 +188,11 @@ export function FormSend() {
 										<label className='form-label' htmlFor='f-service'>
 											Тип услуги *
 										</label>
-										<select className='form-select' id='f-service'>
-											<option value='' disabled selected>
+										<select className='form-select' id='f-service' defaultValue=''>
+											<option value='' disabled>
 												Выберите услугу
 											</option>
+
 											<option value='printer'>Ремонт принтера / МФУ</option>
 											<option value='cartridge'>Заправка картриджа</option>
 											<option value='laptop'>Ремонт ноутбука</option>
@@ -224,7 +230,7 @@ export function FormSend() {
 
 								<label className='form-privacy'>
 									<span className='form-privacy__checkbox'>
-										<input type='checkbox' id='f-privacy' checked />
+										<input type='checkbox' id='f-privacy' defaultChecked />
 										<span className='form-privacy__box'>
 											<svg
 												width='10'

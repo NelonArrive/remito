@@ -1,3 +1,5 @@
+import './Reviews.scss'
+
 export function Reviews() {
 	return (
 		<section className='reviews'>
@@ -45,7 +47,10 @@ export function Reviews() {
 							<div className='review-card'>
 								<span className='review-card__quote'>"</span>
 								<div className='review-card__head'>
-									<div className='review-card__avatar' style='background: linear-gradient(135deg,#3A86FF,#2563EB);'>
+									<div
+										className='review-card__avatar'
+										style={{ background: 'linear-gradient(135deg,#3A86FF,#2563EB)' }}
+									>
 										А
 									</div>
 									<div className='review-card__meta'>
@@ -88,7 +93,10 @@ export function Reviews() {
 							<div className='review-card'>
 								<span className='review-card__quote'>"</span>
 								<div className='review-card__head'>
-									<div className='review-card__avatar' style='background: linear-gradient(135deg,#22C55E,#16A34A);'>
+									<div
+										className='review-card__avatar'
+										style={{ background: 'linear-gradient(135deg,#22C55E,#16A34A)' }}
+									>
 										М
 									</div>
 									<div className='review-card__meta'>
@@ -130,7 +138,10 @@ export function Reviews() {
 							<div className='review-card'>
 								<span className='review-card__quote'>"</span>
 								<div className='review-card__head'>
-									<div className='review-card__avatar' style='background: linear-gradient(135deg,#F97316,#EA6C0A);'>
+									<div
+										className='review-card__avatar'
+										style={{ background: 'linear-gradient(135deg,#F97316,#EA6C0A)' }}
+									>
 										Д
 									</div>
 									<div className='review-card__meta'>
@@ -172,7 +183,10 @@ export function Reviews() {
 							<div className='review-card'>
 								<span className='review-card__quote'>"</span>
 								<div className='review-card__head'>
-									<div className='review-card__avatar' style='background: linear-gradient(135deg,#8B5CF6,#7C3AED);'>
+									<div
+										className='review-card__avatar'
+										style={{ background: 'linear-gradient(135deg,#8B5CF6,#7C3AED)' }}
+									>
 										Е
 									</div>
 									<div className='review-card__meta'>
@@ -214,7 +228,10 @@ export function Reviews() {
 							<div className='review-card'>
 								<span className='review-card__quote'>"</span>
 								<div className='review-card__head'>
-									<div className='review-card__avatar' style='background: linear-gradient(135deg,#EC4899,#DB2777);'>
+									<div
+										className='review-card__avatar'
+										style={{ background: 'linear-gradient(135deg,#EC4899,#DB2777)' }}
+									>
 										О
 									</div>
 									<div className='review-card__meta'>
@@ -257,7 +274,10 @@ export function Reviews() {
 							<div className='review-card'>
 								<span className='review-card__quote'>"</span>
 								<div className='review-card__head'>
-									<div className='review-card__avatar' style='background: linear-gradient(135deg,#14B8A6,#0D9488);'>
+									<div
+										className='review-card__avatar'
+										style={{ background: 'linear-gradient(135deg,#14B8A6,#0D9488)' }}
+									>
 										С
 									</div>
 									<div className='review-card__meta'>

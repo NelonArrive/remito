@@ -2,13 +2,13 @@ import { CookieBanner } from '@/shared/ui/CookieBanner'
 import { Footer } from '@/widgets/Footer'
 import { Header } from '@/widgets/Header'
 import type { Metadata } from 'next'
-import { Golos_Text } from 'next/font/google'
+import { Manrope } from 'next/font/google'
 
 import '@/shared/styles/globals.scss'
 
-const golos = Golos_Text({
+const inter = Manrope({
 	subsets: ['latin', 'cyrillic'],
-	weight: ['400', '500', '600', '700', '800', '900'],
+	weight: ['400', '500', '600', '700', '800'],
 	variable: '--font',
 	display: 'swap'
 })
@@ -26,7 +26,7 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='ru' className={golos.variable}>
+		<html lang='ru' className={inter.variable}>
 			<body>
 				<Header />
 				{children}
