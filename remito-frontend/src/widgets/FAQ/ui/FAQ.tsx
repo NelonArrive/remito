@@ -1,5 +1,6 @@
 'use client'
 
+import { CONTACTS } from '@/entities/legal'
 import { IconPhone, IconPlus, IconTg } from '@/shared/ui/Icons'
 import Link from 'next/link'
 import { useMemo, useState } from 'react'
@@ -60,11 +61,11 @@ export function FAQ() {
 							<h4 className={s.askTitle}>Не нашли ответ?</h4>
 							<p className={s.askDesc}>Задайте вопрос напрямую — ответим в течение 15 минут</p>
 							<div className={s.askBtns}>
-								<Link href='tel:+73431234567' className={s.btnCall}>
+								<Link href={`tel:${CONTACTS.phoneRaw}`} className={s.btnCall}>
 									<IconPhone size={15} />
 									Позвонить
 								</Link>
-								<Link href='https://t.me/remito' className={s.btnTg} target='_blank' rel='noopener'>
+								<Link href={CONTACTS.telegram} className={s.btnTg} target='_blank' rel='noopener'>
 									<IconTg />
 									Написать в Telegram
 								</Link>

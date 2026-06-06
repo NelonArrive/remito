@@ -1,4 +1,3 @@
-// widgets/How/ui/How.module.scss
 
 .section {
 	background: var(--color-bg-gray);
@@ -7,10 +6,9 @@
 	overflow: hidden;
 }
 
-// Декоративная горизонтальная линия за шагами (desktop)
 .bgLine {
 	position: absolute;
-	top: 258px; // подбирается под высоту кружка
+	top: 258px; 
 	left: 0;
 	right: 0;
 	height: 1px;
@@ -38,7 +36,6 @@
 	z-index: 1;
 }
 
-// ---- Head ----
 .head {
 	display: flex;
 	align-items: flex-end;
@@ -93,7 +90,6 @@
 	max-width: 480px;
 }
 
-// ---- Steps ----
 .steps {
 	display: grid;
 	grid-template-columns: repeat(5, 1fr);
@@ -112,7 +108,6 @@
 	}
 }
 
-// ---- Step ----
 .step {
 	display: flex;
 	flex-direction: column;
@@ -121,7 +116,6 @@
 	padding: 0 12px;
 	position: relative;
 
-	// Коннектор между шагами
 	&:not(:last-child)::after {
 		content: '';
 		position: absolute;
@@ -218,7 +212,6 @@
 	margin-top: 10px;
 }
 
-// ---- Bottom cards ----
 .bottom {
 	display: grid;
 	grid-template-columns: 1fr 1fr;

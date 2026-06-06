@@ -1,8 +1,8 @@
 import styles from './HeroCard.module.scss'
 
 interface FloatBadge {
-	icon: string // emoji
-	iconBg: string // цвет фона иконки
+	icon: string
+	iconBg: string
 	title: string
 	sub: string
 }

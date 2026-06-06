@@ -29,7 +29,6 @@
 	}
 }
 
-// Open state
 .isOpen {
 	span:nth-child(1) {
 		transform: translateY(7px) rotate(45deg);
@@ -43,7 +42,7 @@
 	}
 }
 
-@media screen and (max-width: 1120px) {
+@media (max-width: 1120px) {
 	.burger {
 		display: flex;
 		flex-direction: column;

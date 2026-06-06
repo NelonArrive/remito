@@ -1,1 +1,2 @@
-export { FormPopup } from './FormPopup'
+export { FormPopup, type FormPopupVariant } from './FormPopup'
+export { FormPopupProvider } from './FormPopupProvider'

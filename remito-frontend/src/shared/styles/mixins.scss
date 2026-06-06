@@ -22,7 +22,6 @@
   }
 }
 
-// Flexbox shortcuts
 @mixin flex-center {
   display: flex;
   justify-content: center;
@@ -35,12 +34,10 @@
   align-items: center;
 }
 
-// Transition
 @mixin transition($property: all, $duration: 0.3s) {
   transition: $property $duration ease;
 }
 
-// Hover эффект
 @mixin hover-opacity {
   @include transition(opacity);
   &:hover {

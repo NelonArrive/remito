@@ -25,7 +25,6 @@
 	}
 }
 
-// ---- Float badges ----
 .float {
 	position: absolute;
 	display: flex;
@@ -82,7 +81,6 @@
 	font-weight: 500;
 }
 
-// ---- Card icon ----
 .cardIcon {
 	width: 48px;
 	height: 48px;
@@ -94,7 +92,6 @@
 	color: #fff;
 }
 
-// ---- Card title ----
 .cardTitle {
 	font-size: 16px;
 	font-weight: 800;
@@ -102,7 +99,6 @@
 	letter-spacing: -0.2px;
 }
 
-// ---- Card list ----
 .cardList {
 	display: flex;
 	flex-direction: column;
@@ -126,7 +122,6 @@
 	flex-shrink: 0;
 }
 
-// ---- Price ----
 .cardPrice {
 	display: flex;
 	align-items: baseline;

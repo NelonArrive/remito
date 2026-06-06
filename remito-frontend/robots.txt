@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /scripts/
-Sitemap: https://ремито.рф/sitemap.xml
+Sitemap: https://xn--e1agljgp.xn--p1ai/sitemap.xml

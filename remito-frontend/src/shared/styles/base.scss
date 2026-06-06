@@ -4,6 +4,10 @@ body {
 	color: var(--color-dark);
 }
 
+body.popup-open {
+	overflow: hidden;
+}
+
 .container {
 	width: 100%;
 	max-width: var(--container);

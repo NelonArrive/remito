@@ -8,18 +8,54 @@
 	width: 100%;
 }
 
-// Swiper pagination bullets — переопределяем глобально через :global
+.footer {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 5;
+	pointer-events: none;
+}
+
+.footerFade {
+	backdrop-filter: blur(10px);
+	background: linear-gradient(to top, #fffffffa 0%, #000000d1 45%, #080e1a59 75%, #00000000 100%);
+	position: absolute;
+}
+
+.footerInner {
+	position: relative;
+	z-index: 1;
+	max-width: var(--container);
+	margin: 0 auto;
+	padding: 56px 20px 22px;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	gap: 16px;
+	pointer-events: none;
+
+	> * {
+		pointer-events: all;
+	}
+
+	@media (max-width: 640px) {
+		padding: 48px 20px 18px;
+		gap: 14px;
+	}
+}
+
 .pagination {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 6px;
-	padding: 0 0 20px;
+	padding: 0;
 
 	:global(.swiper-pagination-bullet) {
 		width: 8px;
 		height: 8px;
-		background: rgba(255, 255, 255, 0.3);
+		background: rgba(255, 255, 255, 0.35);
 		opacity: 1;
 		border-radius: 4px;
 		transition:
@@ -31,5 +67,6 @@
 	:global(.swiper-pagination-bullet-active) {
 		width: 24px;
 		background: #fff;
+		box-shadow: 0 0 12px rgba(255, 255, 255, 0.35);
 	}
 }

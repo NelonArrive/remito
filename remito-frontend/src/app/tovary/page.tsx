@@ -1,13 +1,17 @@
-import { HomePage } from '@/pages/HomePage'
-import type { Metadata } from 'next'
+import { ProductsPage } from "@/views/ProductsPage";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: 'Ремито | Ремонт и обслуживание компьютеров и принтеров в Екатеринбурге',
+	title: "Картриджи и расходники — Remito | Екатеринбург",
 	description:
-		'Профессиональный ремонт принтеров, МФУ, ноутбуков и компьютеров. Выезд за 1 час, диагностика бесплатно, гарантия 90 дней.',
-	keywords: 'ремонт принтера Екатеринбург, заправка картриджей, ремонт МФУ, ремонт ноутбука'
-}
+		"Оригинальные и совместимые картриджи для принтеров Canon, HP, Xerox, Samsung, Kyocera. Доставка по Екатеринбургу.",
+	openGraph: {
+		title: "Товары — Remito",
+		description: "Картриджи и расходники для оргтехники в Екатеринбурге.",
+		url: "https://remito.ru/tovary/",
+	},
+};
 
-export default function Home() {
-	return <HomePage />
+export default function Page() {
+	return <ProductsPage />;
 }

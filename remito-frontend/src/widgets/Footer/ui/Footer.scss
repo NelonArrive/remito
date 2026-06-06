@@ -515,3 +515,36 @@
 		gap: 12px;
 	}
 }
+
+/* Remito Web */
+.footer--web::before {
+	background: linear-gradient(90deg, #6366f1 0%, #818cf8 50%, var(--color-accent) 100%);
+}
+
+.footer__logo-web {
+	color: #a5b4fc;
+	font-weight: 700;
+}
+
+.footer__back-link {
+	display: inline-flex;
+	margin-top: 16px;
+	font-size: 13px;
+	font-weight: 600;
+	color: rgba(255, 255, 255, 0.4);
+	text-decoration: none;
+	transition: color var(--transition);
+
+	&:hover {
+		color: #a5b4fc;
+	}
+}
+
+.btn-cta-footer--web {
+	background: #6366f1;
+
+	&:hover {
+		background: #4f46e5;
+		box-shadow: 0 8px 24px rgba(99, 102, 241, 0.35);
+	}
+}

@@ -10,7 +10,6 @@
 	padding: 0 20px;
 }
 
-// ---- Layout ----
 .inner {
 	display: grid;
 	grid-template-columns: 360px 1fr;
@@ -23,7 +22,6 @@
 	}
 }
 
-// ---- Left ----
 .left {
 	position: sticky;
 	top: calc(var(--header-h) + 24px);
@@ -112,7 +110,6 @@
 	max-width: 80px;
 }
 
-// ---- Filter tags ----
 .tags {
 	display: flex;
 	flex-wrap: wrap;
@@ -144,7 +141,6 @@
 	border-color: var(--color-primary-light);
 }
 
-// ---- Ask card ----
 .ask {
 	background: var(--color-bg-gray);
 	border: 1.5px solid var(--color-border);
@@ -217,14 +213,12 @@
 	}
 }
 
-// ---- Accordion list ----
 .list {
 	border: 1.5px solid var(--color-border);
 	border-radius: var(--radius-xl);
 	overflow: hidden;
 }
 
-// ---- FAQ item ----
 .item {
 	border-bottom: 1.5px solid var(--color-border);
 	transition: background var(--transition);
@@ -357,7 +351,6 @@
 	}
 }
 
-// ---- Accordion body (grid trick — no JS height) ----
 .itemBody {
 	display: grid;
 	grid-template-rows: 0fr;

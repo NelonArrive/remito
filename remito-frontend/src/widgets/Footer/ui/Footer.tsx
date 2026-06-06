@@ -1,11 +1,17 @@
+'use client'
+
+import { CONTACTS, LEGAL, REQUISITES } from '@/entities/legal'
 import { Icon2Gis, IconPhone, IconSend, IconTelegram, IconVk, IconWasap } from '@/shared/ui/Icons'
+import { WEB_NAV } from '@/widgets/Header/model/header-nav'
+import { usePathname } from 'next/navigation'
+import { WebFooter } from './WebFooter'
 import './Footer.scss'
 
-export function Footer() {
+function RepairFooter() {
 	return (
 		<footer className='footer'>
-			<div className='footer__glow footer__glow--1'></div>
-			<div className='footer__glow footer__glow--2'></div>
+			<div className='footer__glow footer__glow--1' />
+			<div className='footer__glow footer__glow--2' />
 
 			<div className='container'>
 				<div className='footer__cta'>
@@ -14,12 +20,12 @@ export function Footer() {
 							<h3 className='footer__cta-title'>
 								Техника сломалась? <em>Звоните прямо сейчас</em>
 							</h3>
-							<p className='footer__cta-sub'>Выезд за 1 час · Диагностика бесплатно · Работаем без выходных</p>
+							<p className='footer__cta-sub'>Диагностика бесплатно · Работаем без выходных · Ответим за 15 минут</p>
 						</div>
 						<div className='footer__cta-actions'>
-							<a href='tel:+73431234567' className='btn-phone-footer'>
+							<a href={`tel:${CONTACTS.phoneRaw}`} className='btn-phone-footer'>
 								<IconPhone size={15} />
-								+7 (343) 123-45-67
+								{CONTACTS.phone}
 							</a>
 							<a href='#zayavka' className='btn-cta-footer'>
 								<IconSend size={17} />
@@ -33,7 +39,7 @@ export function Footer() {
 					<div className='footer__brand'>
 						<a href='/' className='footer__logo'>
 							<div className='footer__logo-icon'>
-								<img src="/img/logo.svg" />
+								<img src='/img/logo.svg' alt='' />
 							</div>
 							<div className='footer__logo-text'>
 								<span className='footer__logo-name'>
@@ -44,8 +50,8 @@ export function Footer() {
 						</a>
 
 						<p className='footer__brand-desc'>
-							Профессиональный ремонт принтеров, МФУ, ноутбуков и компьютеров в Екатеринбурге. Работаем с 2016 года.
-							Гарантия на все виды работ.
+							Профессиональный ремонт принтеров, МФУ, ноутбуков и компьютеров. Работаем с 2016 года. Гарантия на все виды
+							работ.
 						</p>
 
 						<div className='footer__rating'>
@@ -72,16 +78,16 @@ export function Footer() {
 						</div>
 
 						<div className='footer__socials'>
-							<a href='#' className='footer__social' aria-label='ВКонтакте'>
+							<a href={CONTACTS.vk} className='footer__social' aria-label='ВКонтакте' target='_blank' rel='noopener noreferrer'>
 								<IconVk stroke={1} />
 							</a>
-							<a href='#' className='footer__social' aria-label='Telegram'>
+							<a href={CONTACTS.telegram} className='footer__social' aria-label='Telegram' target='_blank' rel='noopener noreferrer'>
 								<IconTelegram stroke={1} size={16} />
 							</a>
-							<a href='#' className='footer__social' aria-label='WhatsApp'>
+							<a href={CONTACTS.whatsapp} className='footer__social' aria-label='WhatsApp' target='_blank' rel='noopener noreferrer'>
 								<IconWasap stroke={1} size={16} />
 							</a>
-							<a href='#' className='footer__social' aria-label='2GIS'>
+							<a href={CONTACTS.gis2} className='footer__social' aria-label='2GIS' target='_blank' rel='noopener noreferrer'>
 								<Icon2Gis />
 							</a>
 						</div>
@@ -90,66 +96,38 @@ export function Footer() {
 					<div className='footer__nav'>
 						<div className='footer__nav-col'>
 							<span className='footer__nav-title'>Услуги</span>
-							<a href='/remont/printer' className='footer__nav-link'>
+							<a href='/uslugi/remont-printerov/' className='footer__nav-link'>
 								Ремонт принтеров
 							</a>
-							<a href='/remont/mfu' className='footer__nav-link'>
-								Ремонт МФУ
-							</a>
-							<a href='/zapravka' className='footer__nav-link'>
+							<a href='/uslugi/zapravka-kartridzhey/' className='footer__nav-link'>
 								Заправка картриджей
 							</a>
-							<a href='/remont/noutbuk' className='footer__nav-link'>
+							<a href='/uslugi/remont-noutbukov/' className='footer__nav-link'>
 								Ремонт ноутбуков
 							</a>
-							<a href='/remont/kompyuter' className='footer__nav-link'>
+							<a href='/uslugi/remont-kompyuterov/' className='footer__nav-link'>
 								Ремонт компьютеров
 							</a>
-							<a href='/dogovor' className='footer__nav-link'>
-								Обслуживание офисов
-							</a>
-						</div>
-
-						<div className='footer__nav-col'>
-							<span className='footer__nav-title'>Бренды</span>
-							<a href='/brendy/canon' className='footer__nav-link'>
-								Canon
-							</a>
-							<a href='/brendy/hp' className='footer__nav-link'>
-								HP
-							</a>
-							<a href='/brendy/xerox' className='footer__nav-link'>
-								Xerox
-							</a>
-							<a href='/brendy/samsung' className='footer__nav-link'>
-								Samsung
-							</a>
-							<a href='/brendy/epson' className='footer__nav-link'>
-								Epson
-							</a>
-							<a href='/brendy' className='footer__nav-link'>
-								Все бренды →
+							<a href='/uslugi/' className='footer__nav-link'>
+								Все услуги →
 							</a>
 						</div>
 
 						<div className='footer__nav-col'>
 							<span className='footer__nav-title'>Компания</span>
-							<a href='/o-nas' className='footer__nav-link'>
-								О нас
+							<a href='/o-kompanii/' className='footer__nav-link'>
+								О компании
 							</a>
-							<a href='/ceny' className='footer__nav-link'>
+							<a href='/ceny/' className='footer__nav-link'>
 								Цены на услуги
 							</a>
-							<a href='/otzyvy' className='footer__nav-link'>
-								Отзывы
-							</a>
-							<a href='/blog' className='footer__nav-link'>
+							<a href='/blog/' className='footer__nav-link'>
 								Блог
 							</a>
-							<a href='/kontakty' className='footer__nav-link'>
+							<a href='/kontakty/' className='footer__nav-link'>
 								Контакты
 							</a>
-							<a href='/web' className='footer__nav-link'>
+							<a href={WEB_NAV.home} className='footer__nav-link'>
 								Создание сайтов
 								<span className='footer__nav-link-badge'>NEW</span>
 							</a>
@@ -160,26 +138,24 @@ export function Footer() {
 
 							<div className='footer__contact-item'>
 								<span className='footer__contact-label'>Телефон</span>
-								<a href='tel:+73431234567' className='footer__contact-val footer__contact-val--phone'>
-									+7 (343) 123-45-67
+								<a href={`tel:${CONTACTS.phoneRaw}`} className='footer__contact-val footer__contact-val--phone'>
+									{CONTACTS.phone}
 								</a>
 								<span className='footer__hours'>Пн–Вс, 9:00–21:00</span>
 							</div>
 
 							<div className='footer__contact-item'>
 								<span className='footer__contact-label'>Email</span>
-								<a href='mailto:info@remito.ru' className='footer__contact-val'>
-									info@remito.ru
+								<a href={`mailto:${CONTACTS.email}`} className='footer__contact-val'>
+									{CONTACTS.email}
 								</a>
 							</div>
 
 							<div className='footer__contact-item'>
-								<span className='footer__contact-label'>Адрес</span>
-								<span className='footer__contact-val'>
-									Екатеринбург,
-									<br />
-									ул. Ленина, 1
-								</span>
+								<span className='footer__contact-label'>Telegram</span>
+								<a href={CONTACTS.telegram} className='footer__contact-val' target='_blank' rel='noopener noreferrer'>
+									@remito_official
+								</a>
 							</div>
 						</div>
 					</div>
@@ -187,20 +163,24 @@ export function Footer() {
 
 				<div className='footer__bottom'>
 					<p className='footer__copy'>
-						© 2016–2025 Remito. Все права защищены.
+						© 2016–{new Date().getFullYear()} {LEGAL.siteName}. Все права защищены.
 						<br />
-						ИП Иванов И.И. · ИНН 000000000000
+						ИП Половников А.В. · ИНН {REQUISITES.inn}
 					</p>
 
 					<div className='footer__bottom-links'>
-						<a href='/privacy' className='footer__bottom-link'>
+						<a href='/privacy/' className='footer__bottom-link'>
 							Политика конфиденциальности
 						</a>
-						<span className='footer__bottom-sep'></span>
-						<a href='/oferta' className='footer__bottom-link'>
-							Публичная
+						<span className='footer__bottom-sep' />
+						<a href='/oferta/' className='footer__bottom-link'>
+							Оферта
 						</a>
-						<span className='footer__bottom-sep'></span>
+						<span className='footer__bottom-sep' />
+						<a href='/terms/' className='footer__bottom-link'>
+							Условия сайта
+						</a>
+						<span className='footer__bottom-sep' />
 						<a href='/sitemap.xml' className='footer__bottom-link'>
 							Карта сайта
 						</a>
@@ -221,10 +201,17 @@ export function Footer() {
 							<rect x='3' y='3' width='18' height='18' rx='2' />
 							<path d='M3 9h18M9 21V9' />
 						</svg>
-						Сайт сделан в <a href='/web'>Remito Web</a>
+						Сайт сделан в <a href={WEB_NAV.home}>Remito Web</a>
 					</div>
 				</div>
 			</div>
 		</footer>
 	)
+}
+
+export function Footer() {
+	const pathname = usePathname()
+	const isWeb = pathname?.startsWith('/web')
+
+	return isWeb ? <WebFooter /> : <RepairFooter />
 }

@@ -160,7 +160,7 @@ export function Advantages() {
 					</div>
 					<div className={s.headRight}>
 						<span className={s.years}>8+</span>
-						<span className={s.yearsLabel}>лет на рынке Екатеринбурга</span>
+						<span className={s.yearsLabel}>лет на рынке</span>
 					</div>
 				</div>
 
@@ -170,20 +170,20 @@ export function Advantages() {
 						<div className={s.cardIcon}>
 							<IconLightning size={22} />
 						</div>
-						<h3 className={s.cardTitle}>Выезд за 1 час</h3>
-						<p className={s.cardDesc}>Мастер приедет к вам в течение часа после звонка — по всему Екатеринбургу.</p>
-						<span className={s.cardNum}>~60 мин</span>
+						<h3 className={s.cardTitle}>Выезд в удобное время</h3>
+						<p className={s.cardDesc}>Мастер приедет домой или в офис — согласуем время, которое вам подходит.</p>
+						<span className={s.cardNum}>Бесплатно</span>
 					</div>
 
 					<div className={`${s.card} ${s.green}`}>
 						<div className={s.cardIcon}>
 							<IconShield size={22} />
 						</div>
-						<h3 className={s.cardTitle}>Гарантия 90 дней</h3>
+						<h3 className={s.cardTitle}>Гарантия на работы</h3>
 						<p className={s.cardDesc}>
-							Официальная гарантия на все виды работ. Если что-то пойдёт не так — устраним бесплатно.
+							Ответственность за результат. Если что-то пойдёт не так — устраним бесплатно.
 						</p>
-						<span className={s.cardNum}>90 дней</span>
+						<span className={s.cardNum}>Официально</span>
 					</div>
 
 					<div className={`${s.card} ${s.orange}`}>
@@ -253,7 +253,7 @@ export function Advantages() {
 				<div className={s.stats}>
 					<StatCounter target={2000} suffix='+' label='Отремонтировано устройств' />
 					<StatCounter target={98} suffix='%' label='Клиентов довольны результатом' />
-					<StatCounter target={8} suffix=' лет' label='На рынке Екатеринбурга' />
+					<StatCounter target={8} suffix=' лет' label='На рынке' />
 					<StatCounter target={500} suffix='+' label='Моделей принтеров в базе' />
 				</div>
 			</div>

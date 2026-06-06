@@ -9,10 +9,10 @@ export const SERVICES: ServiceItem[] = [
 		list: [
 			'Canon, HP, Xerox, Samsung, Epson, Brother',
 			'Термоузел, ролики, картридж, плата',
-			'Гарантия 90 дней на все работы'
+			'Гарантия на все работы'
 		],
 		price: '500 ₽',
-		href: '/remont/printer/',
+		href: '/uslugi/remont-printerov/',
 		featured: true
 	},
 	{
@@ -22,7 +22,7 @@ export const SERVICES: ServiceItem[] = [
 		description: 'Лазерные и струйные. Оригинальный тонер. Восстановление барабана. Готово за 1–2 часа.',
 		list: ['500+ моделей', 'Выезд или самовывоз'],
 		price: '350 ₽',
-		href: '/zapravka-kartridzhey/'
+		href: '/uslugi/zapravka-kartridzhey/',
 	},
 	{
 		id: 'laptop',
@@ -31,7 +31,7 @@ export const SERVICES: ServiceItem[] = [
 		description: 'Не включается, треснул экран, не заряжается — ремонтируем быстро с гарантией.',
 		list: ['Замена матрицы, клавиатуры', 'Чистка и замена термопасты'],
 		price: '800 ₽',
-		href: '/remont/noutbuk/'
+		href: '/uslugi/remont-noutbukov/',
 	},
 	{
 		id: 'computer',
@@ -40,7 +40,7 @@ export const SERVICES: ServiceItem[] = [
 		description: 'Диагностика, чистка, апгрейд, замена компонентов. Настройка Windows и ПО.',
 		list: ['Замена HDD → SSD', 'Удаление вирусов'],
 		price: '600 ₽',
-		href: '/remont/kompyuter/'
+		href: '/uslugi/remont-kompyuterov/',
 	},
 	{
 		id: 'shop',

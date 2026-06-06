@@ -1,5 +1,3 @@
-// widgets/Hero/ui/HeroSlide/HeroSlide.module.scss
-
 .slide {
 	min-height: 600px;
 	display: flex;
@@ -7,7 +5,6 @@
 	position: relative;
 	overflow: hidden;
 
-	// Цвет фона меняется по теме слайда
 	&.slide1 {
 		background: linear-gradient(135deg, #0a1628 0%, #0d2040 100%);
 	}
@@ -23,7 +20,6 @@
 	}
 }
 
-// ---- BG decorations ----
 .bg {
 	position: absolute;
 	inset: 0;
@@ -34,8 +30,10 @@
 .dotsGrid {
 	position: absolute;
 	inset: 0;
-	background-image: radial-gradient(circle, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+	background-image: radial-gradient(circle, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
 	background-size: 32px 32px;
+	mask-image: linear-gradient(to bottom, #000 0%, #000 45%, rgba(0, 0, 0, 0.35) 72%, transparent 88%);
+	-webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, rgba(0, 0, 0, 0.35) 72%, transparent 88%);
 }
 
 .circle {
@@ -95,12 +93,11 @@
 	}
 }
 
-// ---- Container ----
 .container {
 	width: 100%;
 	max-width: var(--container);
 	margin: 0 auto;
-	padding: 72px 20px 64px;
+	padding: 72px 20px 140px;
 	display: grid;
 	grid-template-columns: 1fr 420px;
 	gap: 48px;
@@ -115,11 +112,10 @@
 
 	@media (max-width: 860px) {
 		grid-template-columns: 1fr;
-		padding: 48px 20px 40px;
+		padding: 48px 20px 128px;
 	}
 }
 
-// ---- Content ----
 .content {
 	display: flex;
 	flex-direction: column;
@@ -127,7 +123,6 @@
 	max-width: 560px;
 }
 
-// Badge
 .badge {
 	display: inline-flex;
 	align-items: center;
@@ -164,7 +159,6 @@
 	}
 }
 
-// Title
 .title {
 	font-size: clamp(28px, 4.5vw, 56px);
 	font-weight: 900;
@@ -187,14 +181,12 @@
 	}
 }
 
-// Desc
 .desc {
 	font-size: clamp(15px, 1.8vw, 17px);
 	color: rgba(255, 255, 255, 0.55);
 	line-height: 1.7;
 }
 
-// Buttons
 .btns {
 	display: flex;
 	align-items: center;
@@ -224,7 +216,6 @@
 	}
 }
 
-// Stats
 .stats {
 	display: flex;
 	align-items: center;
@@ -253,7 +244,6 @@
 	font-weight: 500;
 }
 
-// Visual
 .visual {
 	display: flex;
 	justify-content: center;

@@ -1,8 +1,12 @@
 'use client'
 
+import { CONTACTS } from '@/entities/legal'
+import { SERVICES_DATA } from '@/entities/service/model/service.data'
+import { WEB_NAV, WEB_SERVICE_LINKS } from '@/widgets/Header/model/header-nav'
 import { Button } from '@/shared/ui/Button'
 import { IconClose } from '@/shared/ui/Icons'
 import { Logo } from '@/shared/ui/Logo'
+import { MessageCircle } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styles from './MobileMenu.module.scss'
@@ -25,23 +29,35 @@ const PhoneIcon = () => (
 interface MobileMenuProps {
 	isOpen: boolean
 	onClose: () => void
+	isWeb?: boolean
 }
 
-export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
+export const MobileMenu = ({ isOpen, onClose, isWeb = false }: MobileMenuProps) => {
 	const [servicesOpen, setServicesOpen] = useState(false)
+	const [webOpen, setWebOpen] = useState(false)
 
-	// Блокируем скролл body когда меню открыто
 	useEffect(() => {
 		if (isOpen) {
 			document.body.style.overflow = 'hidden'
 		} else {
 			document.body.style.overflow = ''
 			setServicesOpen(false)
+			setWebOpen(false)
 		}
 		return () => {
 			document.body.style.overflow = ''
 		}
 	}, [isOpen])
+
+	const toggleServices = () => {
+		setServicesOpen(v => !v)
+		if (!isWeb) setWebOpen(false)
+	}
+
+	const toggleWeb = () => {
+		setWebOpen(v => !v)
+		setServicesOpen(false)
+	}
 
 	return (
 		<div
@@ -54,133 +70,118 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
 
 			<div className={styles.panel}>
 				<div className={styles.head}>
-					<Logo compact />
-					<button className={styles.close} onClick={onClose} aria-label='Закрыть меню'>
+					<Logo compact href={isWeb ? WEB_NAV.home : '/'} slogan={isWeb ? 'Разработка сайтов' : undefined} />
+					<button className={styles.close} onClick={onClose} aria-label='Закрыть меню' type='button'>
 						<IconClose />
 					</button>
 				</div>
 
-				{/* Phone */}
 				<div className={styles.phone}>
-					<a href='tel:+73431234567' className={styles.phoneNum}>
-						+7 (343) 123-45-67
+					<a href={`tel:${CONTACTS.phoneRaw}`} className={styles.phoneNum}>
+						{CONTACTS.phone}
 					</a>
-					<span className={styles.phoneSub}>Бесплатный вызов мастера</span>
+					<span className={styles.phoneSub}>{isWeb ? 'Ответим в рабочий день' : 'Бесплатный вызов мастера'}</span>
 				</div>
 
 				<nav className={styles.nav}>
-					<div>
-						<button className={styles.link} onClick={() => setServicesOpen(v => !v)} aria-expanded={servicesOpen}>
-							Услуги
-							<svg
-								width='14'
-								height='14'
-								viewBox='0 0 24 24'
-								fill='none'
-								stroke='currentColor'
-								strokeWidth='2.5'
-								strokeLinecap='round'
-								strokeLinejoin='round'
-								style={{ transition: 'transform .2s', transform: servicesOpen ? 'rotate(180deg)' : 'none' }}
-							>
-								<polyline points='6 9 12 15 18 9' />
-							</svg>
-						</button>
+					{isWeb ? (
+						<>
+							<div>
+								<button
+									type='button'
+									className={styles.link}
+									onClick={toggleServices}
+									aria-expanded={servicesOpen}
+								>
+									Услуги
+									<Chevron open={servicesOpen} />
+								</button>
+								<div className={`${styles.sub} ${servicesOpen ? styles.subOpen : ''}`}>
+									{WEB_SERVICE_LINKS.map(item => (
+										<Link key={item.href} href={item.href} className={styles.subLink} onClick={onClose}>
+											{item.label}
+											<span className={styles.subMeta}>от {item.priceFrom.toLocaleString('ru')} ₽</span>
+										</Link>
+									))}
+									<Link href={WEB_NAV.pricing} className={styles.subLinkAll} onClick={onClose}>
+										Тарифы и цены →
+									</Link>
+								</div>
+							</div>
+							<Link href={WEB_NAV.home} className={styles.link} onClick={onClose}>
+								Remito Web
+							</Link>
+							<Link href='/' className={styles.link} onClick={onClose}>
+								Ремонт техники
+							</Link>
+						</>
+					) : (
+						<>
+							<div>
+								<button
+									type='button'
+									className={styles.link}
+									onClick={toggleServices}
+									aria-expanded={servicesOpen}
+								>
+									Услуги
+									<Chevron open={servicesOpen} />
+								</button>
+								<div className={`${styles.sub} ${servicesOpen ? styles.subOpen : ''}`}>
+									{SERVICES_DATA.map(service => (
+										<Link
+											key={service.slug}
+											href={`/uslugi/${service.slug}/`}
+											className={styles.subLink}
+											onClick={onClose}
+										>
+											{service.shortTitle}
+										</Link>
+									))}
+									<Link href='/uslugi/' className={styles.subLinkAll} onClick={onClose}>
+										Все услуги →
+									</Link>
+								</div>
+							</div>
 
-						<div className={`${styles.sub} ${servicesOpen ? styles.subOpen : ''}`}>
-							<Link href='/remont/printer' className={styles.subLink} onClick={onClose}>
-								<svg
-									width='13'
-									height='13'
-									viewBox='0 0 24 24'
-									fill='none'
-									stroke='currentColor'
-									strokeWidth='2'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								>
-									<polyline points='6 9 6 2 18 2 18 9' />
-									<path d='M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2' />
-									<rect x='6' y='14' width='12' height='8' />
-								</svg>
-								Ремонт принтеров и МФУ
-							</Link>
-							<Link href='/remont/noutbuk' className={styles.subLink} onClick={onClose}>
-								<svg
-									width='13'
-									height='13'
-									viewBox='0 0 24 24'
-									fill='none'
-									stroke='currentColor'
-									strokeWidth='2'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								>
-									<rect x='2' y='3' width='20' height='14' rx='2' />
-									<line x1='2' y1='20' x2='22' y2='20' />
-								</svg>
-								Ремонт ноутбуков
-							</Link>
-							<Link href='/zapravka' className={styles.subLink} onClick={onClose}>
-								<svg
-									width='13'
-									height='13'
-									viewBox='0 0 24 24'
-									fill='none'
-									stroke='currentColor'
-									strokeWidth='2'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								>
-									<path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z' />
-									<polyline points='14 2 14 8 20 8' />
-								</svg>
-								Заправка картриджей
-							</Link>
-							<Link href='/remont/kompyuter' className={styles.subLink} onClick={onClose}>
-								<svg
-									width='13'
-									height='13'
-									viewBox='0 0 24 24'
-									fill='none'
-									stroke='currentColor'
-									strokeWidth='2'
-									strokeLinecap='round'
-									strokeLinejoin='round'
-								>
-									<rect x='2' y='3' width='20' height='14' rx='2' />
-									<line x1='8' y1='21' x2='16' y2='21' />
-									<line x1='12' y1='17' x2='12' y2='21' />
-								</svg>
-								Ремонт компьютеров
-							</Link>
-						</div>
-					</div>
+							<div>
+								<button type='button' className={styles.link} onClick={toggleWeb} aria-expanded={webOpen}>
+									Web
+									<span className={styles.linkBadge}>NEW</span>
+									<Chevron open={webOpen} />
+								</button>
+								<div className={`${styles.sub} ${webOpen ? styles.subOpen : ''} ${styles.subWeb}`}>
+									{WEB_SERVICE_LINKS.map(item => (
+										<Link key={item.href} href={item.href} className={styles.subLink} onClick={onClose}>
+											{item.label}
+										</Link>
+									))}
+									<Link href={WEB_NAV.pricing} className={styles.subLinkAll} onClick={onClose}>
+										Цены на сайты →
+									</Link>
+								</div>
+							</div>
 
-					<Link href='/brendy' className={styles.link} onClick={onClose}>
-						Бренды
-					</Link>
-					<Link href='/tovary' className={styles.link} onClick={onClose}>
-						Товары
-					</Link>
-					<Link href='/ceny' className={styles.link} onClick={onClose}>
-						Цены
-					</Link>
-					<Link href='/web' className={styles.link} onClick={onClose}>
-						Web
-						<span className={styles.linkBadge} style={{ marginLeft: 'auto' }}>
-							NEW
-						</span>
-					</Link>
-					<Link href='/blog' className={styles.link} onClick={onClose}>
+							<Link href='/tovary/' className={styles.link} onClick={onClose}>
+								Товары
+							</Link>
+							<Link href='/ceny/' className={styles.link} onClick={onClose}>
+								Цены
+							</Link>
+							<Link href='/o-kompanii/' className={styles.link} onClick={onClose}>
+								О компании
+							</Link>
+						</>
+					)}
+
+					<Link href='/blog/' className={styles.link} onClick={onClose}>
 						Блог
 					</Link>
-					<Link href='/kontakty' className={styles.link} onClick={onClose}>
+					<Link href='/kontakty/' className={styles.link} onClick={onClose}>
 						Контакты
 					</Link>
 				</nav>
 
-				{/* Footer */}
 				<div className={styles.footer}>
 					<div className={styles.info}>
 						<span className={styles.infoItem}>
@@ -210,17 +211,41 @@ export const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
 								strokeLinecap='round'
 								strokeLinejoin='round'
 							>
-								<path d='M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z' />
-								<circle cx='12' cy='10' r='3' />
+								<path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' />
 							</svg>
-							Екатеринбург
+							Гарантия на работы
 						</span>
 					</div>
-					<Button variant='cta' icon={<PhoneIcon />} onClick={onClose} className={styles.footerBtn}>
-						Вызвать мастера
+					<Button
+						variant='cta'
+						icon={isWeb ? <MessageCircle size={15} /> : <PhoneIcon />}
+						onClick={onClose}
+						className={styles.footerBtn}
+						data-popup='open'
+					>
+						{isWeb ? 'Обсудить проект' : 'Вызвать мастера'}
 					</Button>
 				</div>
 			</div>
 		</div>
+	)
+}
+
+function Chevron({ open }: { open: boolean }) {
+	return (
+		<svg
+			width='14'
+			height='14'
+			viewBox='0 0 24 24'
+			fill='none'
+			stroke='currentColor'
+			strokeWidth='2.5'
+			strokeLinecap='round'
+			strokeLinejoin='round'
+			style={{ transition: 'transform .2s', transform: open ? 'rotate(180deg)' : 'none' }}
+			aria-hidden
+		>
+			<polyline points='6 9 12 15 18 9' />
+		</svg>
 	)
 }

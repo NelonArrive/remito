@@ -1,4 +1,5 @@
 import { CookieBanner } from '@/shared/ui/CookieBanner'
+import { FormPopupProvider } from '@/shared/ui/FormPopup'
 import { Footer } from '@/widgets/Footer'
 import { Header } from '@/widgets/Header'
 import type { Metadata } from 'next'
@@ -16,7 +17,7 @@ const inter = Manrope({
 export const metadata: Metadata = {
 	title: 'Ремито | Ремонт и обслуживание компьютеров и принтеров в Екатеринбурге',
 	description:
-		'Профессиональный ремонт принтеров, МФУ, ноутбуков и компьютеров. Выезд за 1 час, диагностика бесплатно, гарантия 90 дней.',
+		'Профессиональный ремонт принтеров, МФУ, ноутбуков и компьютеров. Диагностика бесплатно, гарантия на работы, выезд в удобное время.',
 	keywords: 'ремонт принтера Екатеринбург, заправка картриджей, ремонт МФУ, ремонт ноутбука'
 }
 
@@ -31,6 +32,7 @@ export default function RootLayout({
 				<Header />
 				{children}
 				<Footer />
+				<FormPopupProvider />
 				<CookieBanner />
 			</body>
 		</html>

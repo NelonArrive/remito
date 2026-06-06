@@ -70,9 +70,9 @@ export function How() {
 							<span className={s.stepNum}>3</span>
 						</div>
 						<h3 className={s.stepTitle}>Мастер приезжает и делает диагностику</h3>
-						<p className={s.stepDesc}>Выезд в течение 1 часа. Бесплатная диагностика и озвучивание стоимости</p>
+						<p className={s.stepDesc}>Выезд в согласованное время. Бесплатная диагностика и озвучивание стоимости</p>
 						<span className={s.stepTime}>
-							<IconClock size={11} /> 1 час выезд
+							<IconClock size={11} /> В удобное время
 						</span>
 					</div>
 
@@ -97,10 +97,10 @@ export function How() {
 						</div>
 						<h3 className={s.stepTitle}>Готово — выдаём гарантию</h3>
 						<p className={s.stepDesc}>
-							Проверяем работу устройства вместе с вами и выдаём гарантийный талон на 90 дней
+							Проверяем работу устройства вместе с вами и выдаём гарантийный талон
 						</p>
 						<span className={s.stepTime}>
-							<IconShield size={11} /> Гарантия 90 дней
+							<IconShield size={11} /> Гарантия на работы
 						</span>
 					</div>
 				</div>
@@ -120,7 +120,7 @@ export function How() {
 						<ul className={s.modeList}>
 							<li className={s.modeItem}>
 								<span className={s.modeDot} />
-								Мастер приедет в течение 1 часа после звонка
+								Мастер приедет в согласованное с вами время
 							</li>
 							<li className={s.modeItem}>
 								<span className={s.modeDot} />
@@ -128,7 +128,7 @@ export function How() {
 							</li>
 							<li className={s.modeItem}>
 								<span className={s.modeDot} />
-								Работаем по всему Екатеринбургу, выезд бесплатный
+								Выезд бесплатный — домой или в офис
 							</li>
 							<li className={s.modeItem}>
 								<span className={s.modeDot} />
@@ -147,7 +147,7 @@ export function How() {
 							</div>
 							<div>
 								<div className={s.modeTitle}>Привезти в мастерскую</div>
-								<div className={s.modeSub}>Екатеринбург, ул. Ленина, 1</div>
+								<div className={s.modeSub}>По предварительной договорённости</div>
 							</div>
 						</div>
 						<ul className={s.modeList}>
@@ -169,7 +169,7 @@ export function How() {
 							</li>
 						</ul>
 						<Link href='/kontakty/' className={s.modeCta}>
-							Адрес на карте <IconArrowRight size={14} />
+							Связаться с нами <IconArrowRight size={14} />
 						</Link>
 					</div>
 				</div>

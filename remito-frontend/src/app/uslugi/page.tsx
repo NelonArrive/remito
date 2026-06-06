@@ -1,13 +1,17 @@
-import { HomePage } from '@/pages/HomePage'
-import type { Metadata } from 'next'
+import { ServicesPage } from "@/views/ServicesPage";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: 'Ремито | Ремонт и обслуживание компьютеров и принтеров в Екатеринбурге',
+	title: "Услуги — Remito | Ремонт оргтехники в Екатеринбурге",
 	description:
-		'Профессиональный ремонт принтеров, МФУ, ноутбуков и компьютеров. Выезд за 1 час, диагностика бесплатно, гарантия 90 дней.',
-	keywords: 'ремонт принтера Екатеринбург, заправка картриджей, ремонт МФУ, ремонт ноутбука'
-}
+		"Ремонт принтеров, МФУ, ноутбуков и компьютеров. Заправка картриджей, установка Windows, восстановление данных. Выезд в удобное время.",
+	openGraph: {
+		title: "Услуги — Remito",
+		description: "Все услуги по ремонту оргтехники в Екатеринбурге.",
+		url: "https://remito.ru/uslugi/",
+	},
+};
 
-export default function Home() {
-	return <HomePage />
+export default function Page() {
+	return <ServicesPage />;
 }

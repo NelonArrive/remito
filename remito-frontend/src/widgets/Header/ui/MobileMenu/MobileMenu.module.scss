@@ -32,7 +32,6 @@
 	z-index: 1000;
 }
 
-// Open state
 .isOpen {
 	pointer-events: all;
 
@@ -45,7 +44,6 @@
 	}
 }
 
-// Head
 .head {
 	display: flex;
 	align-items: center;
@@ -75,7 +73,6 @@
 	}
 }
 
-// Phone
 .phone {
 	padding: 16px 20px;
 	border-bottom: 1px solid var(--color-border);
@@ -109,7 +106,6 @@
 	}
 }
 
-// Nav
 .nav {
 	padding: 12px;
 	flex: 1;
@@ -154,7 +150,6 @@
 	border-radius: var(--radius-full);
 }
 
-// Submenu
 .sub {
 	display: none;
 	padding: 4px 0 8px 12px;
@@ -167,6 +162,7 @@
 .subLink {
 	display: flex;
 	align-items: center;
+	justify-content: space-between;
 	gap: 8px;
 	padding: 9px 12px;
 	font-size: 13px;
@@ -184,7 +180,31 @@
 	}
 }
 
-// Footer
+.subMeta {
+	font-size: 11px;
+	font-weight: 600;
+	color: var(--color-muted);
+	opacity: 0.85;
+}
+
+.subLinkAll {
+	display: block;
+	padding: 10px 12px 6px;
+	font-size: 12px;
+	font-weight: 700;
+	color: var(--color-primary);
+	text-decoration: none;
+
+	&:hover {
+		color: var(--color-primary-dark);
+	}
+}
+
+.subWeb .subLink:hover,
+.subWeb .subLinkAll {
+	color: #4f46e5;
+}
+
 .footer {
 	padding: 16px 20px;
 	border-top: 1px solid var(--color-border);

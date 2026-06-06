@@ -32,7 +32,7 @@ export function Services() {
 						оргтехнику — <span>от ноутбуков до МФУ</span>
 					</h2>
 					<p className={s.desc}>
-						Профессиональный ремонт оргтехники с гарантией. Выезд в день обращения по Екатеринбургу.
+						Профессиональный ремонт оргтехники с гарантией. Выезд в удобное время — домой или в офис.
 					</p>
 				</div>
 
@@ -78,7 +78,7 @@ export function Services() {
 					<Button variant='primary' data-popup='open' icon={<IconPhone size={15} />}>
 						Вызвать мастера бесплатно
 					</Button>
-					<Link href='/remont/' className='btn-ghost'>
+					<Link href='/uslugi/' className='btn-ghost'>
 						Все услуги и цены →
 					</Link>
 				</div>

@@ -1,12 +1,10 @@
-// widgets/Products/ui/Products.module.scss
 
 .products {
 	background: var(--color-bg-white);
-	padding: 96px 0 80px;
+	padding: 56px 0 60px;
 	overflow: hidden;
 }
 
-// ---- Head ----
 .head {
 	display: flex;
 	align-items: flex-end;
@@ -62,6 +60,12 @@
 	}
 }
 
+.subtitle {
+	font-size: 14px;
+	color: var(--color-muted);
+	font-weight: 600;
+}
+
 .btnGhost {
 	display: inline-flex;
 	align-items: center;
@@ -90,69 +94,10 @@
 	}
 }
 
-// ---- Tabs ----
 .tabs {
-	display: flex;
-	align-items: center;
-	gap: 6px;
 	margin-bottom: 32px;
-	overflow-x: auto;
-	scrollbar-width: none;
-	padding-bottom: 2px;
-
-	&::-webkit-scrollbar {
-		display: none;
-	}
 }
 
-.tab {
-	display: inline-flex;
-	align-items: center;
-	gap: 7px;
-	padding: 9px 18px;
-	border-radius: var(--radius-full);
-	border: 1.5px solid var(--color-border);
-	background: transparent;
-	font-size: 13.5px;
-	font-weight: 600;
-	color: var(--color-muted);
-	cursor: pointer;
-	transition: all var(--transition);
-	white-space: nowrap;
-	flex-shrink: 0;
-
-	&:hover {
-		border-color: var(--color-primary);
-		color: var(--color-primary);
-		background: var(--color-primary-light);
-	}
-}
-
-.tabActive {
-	background: var(--color-primary);
-	border-color: var(--color-primary);
-	color: #fff;
-
-	.tabCount {
-		background: rgba(255, 255, 255, 0.25);
-		color: #fff;
-	}
-}
-
-.tabCount {
-	font-size: 11px;
-	font-weight: 700;
-	background: var(--color-bg-gray);
-	color: var(--color-muted);
-	padding: 1px 7px;
-	border-radius: var(--radius-full);
-	line-height: 1.6;
-	transition:
-		background var(--transition),
-		color var(--transition);
-}
-
-// ---- Swiper ----
 .swiper {
 	overflow: visible !important;
 }
