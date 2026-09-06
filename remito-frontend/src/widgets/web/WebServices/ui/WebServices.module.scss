@@ -1,0 +1,121 @@
+.grid {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 20px;
+
+	@media (max-width: 1024px) {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	@media (max-width: 600px) {
+		grid-template-columns: 1fr;
+	}
+}
+
+.card {
+	background: var(--color-bg-white);
+	border: 1.5px solid var(--color-border);
+	border-radius: var(--radius-xl);
+	padding: 28px;
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	text-decoration: none;
+	position: relative;
+	overflow: hidden;
+	transition:
+		border-color var(--transition),
+		box-shadow var(--transition),
+		transform var(--transition);
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		height: 3px;
+		background: var(--service-color);
+		transform: scaleX(0);
+		transform-origin: left;
+		transition: transform var(--transition);
+	}
+
+	&:hover {
+		border-color: transparent;
+		box-shadow: var(--shadow-lg);
+		transform: translateY(-4px);
+
+		&::before {
+			transform: scaleX(1);
+		}
+
+		.cardIcon {
+			transform: scale(1.06);
+		}
+
+		.cardLink svg {
+			transform: translateX(4px);
+		}
+	}
+}
+
+.cardIcon {
+	width: 52px;
+	height: 52px;
+	border-radius: var(--radius-lg);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--service-color);
+	background: var(--service-color-light);
+	transition: transform var(--transition);
+}
+
+.cardTitle {
+	font-size: 17px;
+	font-weight: 800;
+	color: var(--color-dark);
+	letter-spacing: -0.2px;
+}
+
+.cardDesc {
+	font-size: 13.5px;
+	color: var(--color-muted);
+	line-height: 1.65;
+	flex: 1;
+}
+
+.cardMeta {
+	display: flex;
+	align-items: baseline;
+	justify-content: space-between;
+	gap: 8px;
+	padding-top: 12px;
+	border-top: 1px solid var(--color-border);
+}
+
+.cardPrice {
+	font-size: 16px;
+	font-weight: 900;
+	color: var(--color-dark);
+}
+
+.cardDays {
+	font-size: 12px;
+	font-weight: 600;
+	color: var(--color-muted);
+}
+
+.cardLink {
+	display: inline-flex;
+	align-items: center;
+	gap: 5px;
+	font-size: 13px;
+	font-weight: 700;
+	color: var(--service-color);
+
+	svg {
+		transition: transform var(--transition);
+	}
+}

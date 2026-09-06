@@ -4,11 +4,17 @@ import styles from './Logo.module.scss'
 
 interface LogoProps {
 	compact?: boolean
+	href?: string
+	slogan?: string
 }
 
-export const Logo = ({ compact = false }: LogoProps) => {
+export const Logo = ({ compact = false, href = '/', slogan }: LogoProps) => {
+	const label = href.startsWith('/web') ? 'Remito Web — на главную' : 'Remito — на главную'
+	const defaultSlogan = compact ? undefined : 'Ремонт оргтехники'
+	const displaySlogan = slogan ?? defaultSlogan
+
 	return (
-		<Link href='/' className={styles.logo} aria-label='Remito — на главную'>
+		<Link href={href} className={styles.logo} aria-label={label}>
 			<div className={`${styles.icon} ${compact ? styles.iconCompact : ''}`}>
 				<Image
 					src='/img/logo.svg'
@@ -19,8 +25,10 @@ export const Logo = ({ compact = false }: LogoProps) => {
 				/>
 			</div>
 			<div className={styles.text}>
-				<span className={`${styles.name} ${compact ? styles.nameCompact : ''}`}>Remito</span>
-				{!compact && <span className={styles.slogan}>Ремонт оргтехники в Екатеринбурге</span>}
+				<span className={`${styles.name} ${compact ? styles.nameCompact : ''}`}>
+					Remito{href.startsWith('/web') && <span className={styles.nameAccent}> Web</span>}
+				</span>
+				{displaySlogan && <span className={styles.slogan}>{displaySlogan}</span>}
 			</div>
 		</Link>
 	)

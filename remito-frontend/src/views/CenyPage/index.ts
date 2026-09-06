@@ -1,0 +1,1 @@
+export { CenyPage } from './ui/CenyPage'

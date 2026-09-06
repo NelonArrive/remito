@@ -1,117 +1,137 @@
+'use client'
+
+import { SERVICES_DATA } from '@/entities/service/model/service.data'
+import { WEB_SERVICES } from '@/entities/web-service'
+import { WEB_NAV, WEB_SERVICE_LINKS } from '@/widgets/Header/model/header-nav'
+import {
+	AppWindow,
+	Building2,
+	Droplets,
+	Globe,
+	HardDrive,
+	Layout,
+	Laptop,
+	Monitor,
+	Printer,
+	ShoppingCart,
+	Wind
+} from 'lucide-react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import type { ReactNode } from 'react'
+import { NavDropdown, type NavDropdownItem } from './NavDropdown'
 import styles from './Nav.module.scss'
 
-export const Nav = () => {
+const REPAIR_ICON_MAP: Record<string, ReactNode> = {
+	Printer: <Printer size={14} />,
+	Droplets: <Droplets size={14} />,
+	Laptop: <Laptop size={14} />,
+	Monitor: <Monitor size={14} />,
+	Wind: <Wind size={14} />,
+	AppWindow: <AppWindow size={14} />,
+	HardDrive: <HardDrive size={14} />
+}
+
+const WEB_ICON_MAP: Record<string, ReactNode> = {
+	Layout: <Layout size={14} />,
+	Globe: <Globe size={14} />,
+	Building2: <Building2 size={14} />,
+	ShoppingCart: <ShoppingCart size={14} />
+}
+
+interface NavProps {
+	mode?: 'default' | 'web'
+}
+
+export const Nav = ({ mode = 'default' }: NavProps) => {
+	const pathname = usePathname()
+	const isWeb = mode === 'web'
+
+	const repairItems: NavDropdownItem[] = SERVICES_DATA.map(service => ({
+		href: `/uslugi/${service.slug}/`,
+		label: service.shortTitle,
+		icon: REPAIR_ICON_MAP[service.icon] ?? <Printer size={14} />
+	}))
+
+	const webItems: NavDropdownItem[] = WEB_SERVICE_LINKS.map((item, index) => ({
+		href: item.href,
+		label: item.label,
+		meta: `от ${item.priceFrom.toLocaleString('ru')} ₽`,
+		icon: WEB_ICON_MAP[WEB_SERVICES[index]?.icon ?? ''] ?? <Layout size={14} />
+	}))
+
+	const isRepairServicesActive = pathname?.startsWith('/uslugi')
+	const isWebActive = pathname?.startsWith('/web')
+	const isCenyActive = pathname === '/ceny' || pathname === '/ceny/'
+	const isTovaryActive = pathname?.startsWith('/tovary')
+	const isAboutActive = pathname?.startsWith('/o-kompanii')
+
+	if (isWeb) {
+		return (
+			<nav className={styles.nav} aria-label='Навигация Remito Web'>
+				<ul className={styles.list}>
+					<NavDropdown
+						id='web-services'
+						label='Услуги'
+						href={WEB_NAV.home}
+						items={webItems}
+						footer={{ href: WEB_NAV.pricing, label: 'Тарифы и цены' }}
+						isActive={isWebActive && pathname !== '/web/ceny' && pathname !== '/web/ceny/'}
+						accent='web'
+					/>
+					<li className={styles.item}>
+						<Link
+							href={WEB_NAV.pricing}
+							className={`${styles.link} ${pathname?.includes('/web/ceny') ? styles.linkActive : ''}`}
+						>
+							Тарифы
+						</Link>
+					</li>
+					<li className={styles.item}>
+						<Link href='/' className={styles.link}>
+							Ремонт техники
+						</Link>
+					</li>
+				</ul>
+			</nav>
+		)
+	}
+
 	return (
 		<nav className={styles.nav} aria-label='Основная навигация'>
 			<ul className={styles.list}>
-				{/* Услуги — с дропдауном */}
+				<NavDropdown
+					id='repair-services'
+					label='Услуги'
+					href='/uslugi/'
+					items={repairItems}
+					footer={{ href: '/uslugi/', label: 'Все услуги' }}
+					isActive={isRepairServicesActive}
+				/>
 				<li className={styles.item}>
-					<Link href='/uslugi' className={styles.link}>
-						Услуги
-						<svg
-							width='12'
-							height='12'
-							viewBox='0 0 24 24'
-							fill='none'
-							stroke='currentColor'
-							strokeWidth='2.5'
-							strokeLinecap='round'
-							strokeLinejoin='round'
-						>
-							<polyline points='6 9 12 15 18 9' />
-						</svg>
-					</Link>
-					<div className={styles.dropdown} role='menu'>
-						<Link href='/remont/printer' className={styles.dropdownLink}>
-							<svg
-								width='14'
-								height='14'
-								viewBox='0 0 24 24'
-								fill='none'
-								stroke='currentColor'
-								strokeWidth='2'
-								strokeLinecap='round'
-								strokeLinejoin='round'
-							>
-								<polyline points='6 9 6 2 18 2 18 9' />
-								<path d='M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2' />
-								<rect x='6' y='14' width='12' height='8' />
-							</svg>
-							Ремонт принтеров и МФУ
-						</Link>
-						<Link href='/remont/noutbuk' className={styles.dropdownLink}>
-							<svg
-								width='14'
-								height='14'
-								viewBox='0 0 24 24'
-								fill='none'
-								stroke='currentColor'
-								strokeWidth='2'
-								strokeLinecap='round'
-								strokeLinejoin='round'
-							>
-								<rect x='2' y='3' width='20' height='14' rx='2' />
-								<line x1='2' y1='20' x2='22' y2='20' />
-							</svg>
-							Ремонт ноутбуков
-						</Link>
-						<Link href='/zapravka' className={styles.dropdownLink}>
-							<svg
-								width='14'
-								height='14'
-								viewBox='0 0 24 24'
-								fill='none'
-								stroke='currentColor'
-								strokeWidth='2'
-								strokeLinecap='round'
-								strokeLinejoin='round'
-							>
-								<path d='M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z' />
-								<polyline points='14 2 14 8 20 8' />
-							</svg>
-							Заправка картриджей
-						</Link>
-						<Link href='/remont/kompyuter' className={styles.dropdownLink}>
-							<svg
-								width='14'
-								height='14'
-								viewBox='0 0 24 24'
-								fill='none'
-								stroke='currentColor'
-								strokeWidth='2'
-								strokeLinecap='round'
-								strokeLinejoin='round'
-							>
-								<rect x='2' y='3' width='20' height='14' rx='2' />
-								<line x1='8' y1='21' x2='16' y2='21' />
-								<line x1='12' y1='17' x2='12' y2='21' />
-							</svg>
-							Ремонт компьютеров
-						</Link>
-					</div>
-				</li>
-
-				<li className={styles.item}>
-					<Link href='/brendy' className={styles.link}>
-						Бренды
-					</Link>
-				</li>
-				<li className={styles.item}>
-					<Link href='/tovary' className={styles.link}>
+					<Link href='/tovary/' className={`${styles.link} ${isTovaryActive ? styles.linkActive : ''}`}>
 						Товары
 					</Link>
 				</li>
 				<li className={styles.item}>
-					<Link href='/ceny' className={styles.link}>
+					<Link href='/ceny/' className={`${styles.link} ${isCenyActive ? styles.linkActive : ''}`}>
 						Цены
 					</Link>
 				</li>
 				<li className={styles.item}>
-					<Link href='/web' className={styles.link}>
-						Web <span className={styles.linkBadge}>NEW</span>
+					<Link href='/o-kompanii/' className={`${styles.link} ${isAboutActive ? styles.linkActive : ''}`}>
+						О компании
 					</Link>
 				</li>
+				<NavDropdown
+					id='web'
+					label='Web'
+					href={WEB_NAV.home}
+					items={webItems}
+					footer={{ href: WEB_NAV.pricing, label: 'Цены на сайты' }}
+					isActive={isWebActive}
+					accent='web'
+				/>
 			</ul>
 		</nav>
 	)

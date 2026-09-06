@@ -1,5 +1,6 @@
 'use client'
 
+import { Cookie } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styles from './CookieBanner.module.scss'
@@ -12,7 +13,7 @@ export const CookieBanner = () => {
 
 	useEffect(() => {
 		if (!localStorage.getItem(COOKIE_KEY)) {
-			const t = setTimeout(() => setVisible(true), 300)
+			const t = setTimeout(() => setVisible(true), 400)
 			return () => clearTimeout(t)
 		}
 	}, [])
@@ -23,41 +24,40 @@ export const CookieBanner = () => {
 			localStorage.setItem(COOKIE_KEY, '1')
 			setVisible(false)
 			setHiding(false)
-		}, 400)
+		}, 350)
 	}
 
 	if (!visible) return null
 
 	return (
 		<div
-			id='cookieBanner'
 			role='region'
 			aria-label='Уведомление о cookies'
-			className={`
-        ${styles.cookie}
-        ${hiding ? styles.hiding : styles.isVisible}
-      `}
+			className={`${styles.banner} ${hiding ? styles.hiding : styles.visible}`}
 		>
-			<div className={`${styles.glow} ${styles.glow1}`} />
-			<div className={`${styles.glow} ${styles.glow2}`} />
-			<div className={styles.grid} />
+			<div className={styles.shell}>
+				<div className={styles.accent} aria-hidden />
+				<div className={styles.glow1} aria-hidden />
+				<div className={styles.glow2} aria-hidden />
+				<div className={styles.grid} aria-hidden />
 
-			<div className={styles.inner}>
-				<span className={styles.icon} aria-hidden='true'>
-					🍪
-				</span>
+				<div className={styles.inner}>
+					<div className={styles.iconWrap} aria-hidden>
+						<Cookie size={20} />
+					</div>
 
-				<p className={styles.text}>
-					Мы используем файлы cookie для улучшения работы сайта. Продолжая использовать сайт, вы соглашаетесь с нашей{' '}
-					<Link href='/privacy/' className={styles.link}>
-						политикой конфиденциальности
-					</Link>
-					.
-				</p>
+					<p className={styles.text}>
+						Мы используем cookie для работы сайта и аналитики. Продолжая, вы соглашаетесь с{' '}
+						<Link href='/privacy/' className={styles.link}>
+							политикой конфиденциальности
+						</Link>
+						.
+					</p>
 
-				<button type='button' className={styles.btn} onClick={handleAccept}>
-					Продолжить
-				</button>
+					<button type='button' className={styles.btn} onClick={handleAccept}>
+						Понятно
+					</button>
+				</div>
 			</div>
 		</div>
 	)

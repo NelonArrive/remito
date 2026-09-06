@@ -5,9 +5,6 @@ import type { Swiper as SwiperType } from 'swiper'
 import { Autoplay, Pagination } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 
-import 'swiper/css'
-import 'swiper/css/pagination'
-
 import { heroSlides } from '../model/heroSlides'
 import styles from './Hero.module.scss'
 import { HeroControls } from './HeroControls/HeroControls'
@@ -28,6 +25,14 @@ export const Hero = () => {
 
 	return (
 		<section className={styles.hero}>
+			<div className={styles.footer}>
+				<div className={styles.footerFade} aria-hidden />
+				<div className={styles.footerInner}>
+					<div className={styles.pagination} />
+					<HeroControls onPrev={handlePrev} onNext={handleNext} progressRef={progressBarRef} />
+				</div>
+			</div>
+
 			<Swiper
 				className={styles.swiper}
 				modules={[Autoplay, Pagination]}
@@ -46,11 +51,7 @@ export const Hero = () => {
 						<HeroSlide data={slide} />
 					</SwiperSlide>
 				))}
-
-				<div className={styles.pagination} />
 			</Swiper>
-
-			<HeroControls onPrev={handlePrev} onNext={handleNext} progressRef={progressBarRef} />
 		</section>
 	)
 }
