@@ -57,6 +57,10 @@ dependencies {
     // Mail
     implementation("org.springframework.boot:spring-boot-starter-mail")
 
+    // AWS SDK S2 v2 — совместимый с Cloudflare R2
+    implementation(platform("software.amazon.awssdk:bom:2.28.13"))
+    implementation("software.amazon.awssdk:s3")
+
     // Lombok
     compileOnly("org.projectlombok:lombok")
     annotationProcessor("org.projectlombok:lombok")

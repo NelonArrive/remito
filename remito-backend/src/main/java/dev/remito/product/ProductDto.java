@@ -1,6 +1,7 @@
 package dev.remito.product;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public record ProductDto(
 	Long id,
@@ -14,6 +15,7 @@ public record ProductDto(
 	String colorName,
 	String colorHex,
 	String imageUrl,
-	boolean isActive
+	boolean isActive,
+	List<String> gallery
 ) {
 }

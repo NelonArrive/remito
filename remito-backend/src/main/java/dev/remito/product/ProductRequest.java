@@ -4,6 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 public record ProductRequest(
 	@NotBlank String name,
@@ -14,6 +15,7 @@ public record ProductRequest(
 	@NotNull Long categoryId,
 	Long brandId,
 	Long colorId,
-	String imageUrl
+	String imageUrl,
+	List<String> gallery
 ) {
 }

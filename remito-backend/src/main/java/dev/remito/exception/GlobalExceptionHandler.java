@@ -7,7 +7,9 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
+import java.util.Map;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -28,6 +30,17 @@ public class GlobalExceptionHandler {
 			.body(ErrorResponse.of(409, "Conflict", ex.getMessage()));
 	}
 	
+	@ExceptionHandler(IllegalArgumentException.class)
+	public ResponseEntity<Map<String, String>> handleBadRequest(IllegalArgumentException ex) {
+		return ResponseEntity.badRequest().body(Map.of("message", ex.getMessage()));
+	}
+	
+	@ExceptionHandler(MaxUploadSizeExceededException.class)
+	public ResponseEntity<Map<String, String>> handleTooLarge(MaxUploadSizeExceededException ex) {
+		return ResponseEntity.status(HttpStatus.PAYLOAD_TOO_LARGE)
+			.body(Map.of("message", "File too big"));
+	}
+	
 	@ExceptionHandler(TokenRefreshException.class)
 	public ResponseEntity<ErrorResponse> handleTokenRefresh(TokenRefreshException ex) {
 		return ResponseEntity
@@ -42,7 +55,6 @@ public class GlobalExceptionHandler {
 			.body(ErrorResponse.of(401, "Unauthorized", ex.getMessage()));
 	}
 	
-	// Ошибки @Valid
 	@ExceptionHandler(MethodArgumentNotValidException.class)
 	public ResponseEntity<ErrorResponse> handleValidation(MethodArgumentNotValidException ex) {
 		String message = ex.getBindingResult().getFieldErrors().stream()
@@ -54,7 +66,6 @@ public class GlobalExceptionHandler {
 			.body(ErrorResponse.of(400, "Validation Failed", message));
 	}
 	
-	// Всё остальное
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ErrorResponse> handleGeneral(Exception ex) {
 		log.error("Unhandled exception", ex);
